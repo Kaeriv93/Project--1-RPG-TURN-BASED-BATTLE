@@ -6,3 +6,9 @@ body{
 button{
     cursor: pointer;
 }
+
+.cloud{
+    transform: scaleX(-1);
+    width: 200px;
+    height: 200px;
+}
