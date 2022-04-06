@@ -1,16 +1,54 @@
+/* This will be the backdrop when I make one */
+
 body{
-    background-color: aquamarine;
+    background-color: white;
     text-align: center;
+    color: white;
+  
+  
 }
+
+.battleground{
+  background-color:green;
+}
+
+
+/* END OF BACKGROUND  */
+
+/* Styling Lists and Menus */
+ul{
+    text-decoration: none;
+    list-style-type: none;
+    
+}
+
+
 
 button{
     cursor: pointer;
+    display: inline-block;
+    
 }
 
-.cloud{
+.hero{
     position: relative;
-    top: 100px;
+    justify-content: center;
+    display: flex;
+    padding-top: 15vh;
 }
+
+.sephiroth{
+position: absolute;
+top: 35vh;
+right: 30vh;
+
+}
+
+.battlemenu{
+    text-align: left;
+}
+
+
 
 /* MODAL TEST */
 /* The Modal (background) */
