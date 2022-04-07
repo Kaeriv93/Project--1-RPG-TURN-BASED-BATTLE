@@ -112,7 +112,8 @@ const magicSFX = new Audio('./music/soundfx/magic.wav')
 //Cloud Attacks && Status
 const cloudAttack =() =>{
     cloud.attack(sephiroth);   
-    $cloud.attr('src', './images/Cloud/cloud-attack.gif')
+    $cloud.attr('src', './images/Cloud/cloud-attack.gif');
+    
 }
 const cloudHeal = () =>{
     cloud.redPotion(target);
@@ -140,11 +141,13 @@ const checkCloud = ()=>{
 
 //Cloud Related Buttons
 $cloudAttack.click(()=>{
-    cloudAttack();   
+    cloudAttack();
+    checkSephiroth();   
 })
 
 $cloudMagic.click(()=>{
     cloudMagic();
+    checkSephiroth();
 })
 
 
@@ -179,10 +182,12 @@ const checkTifa =() =>{
 //Tifa Related Buttons
 $tifaAttack.click(()=>{
     tifaAttack();
+    checkSephiroth();
 })
 
 $tifaMagic.click(()=>{
     tifaMagicAttack();
+    checkSephiroth();
 })
 
 $tifaItems.click(()=>{
@@ -194,8 +199,7 @@ $tifaItems.click(()=>{
 let $sephiroth = $('.sephiroth')
 let $sephirothAttack =$('.sephiroth-attack')
 let $sephirothHeal = $('.sephiroth-heal')
-console.log($sephirothAttack)
-console.log($sephirothHeal)
+let $sephirothMagicAttack = $('.sephiroth-magic')
 
 //Sephiroth Attacks & Status
 const sephirothAttacksAll = ()=>{
@@ -209,6 +213,25 @@ const sephirothAttacksAll = ()=>{
     checkTifa();
 }
 
+const sephirothMagicAttack = () =>{
+    sephiroth.magicAttack(tifa)
+    $sephiroth.attr('src', './images/Sephiroth/sephiroth-magic.gif')
+   
+
+}
+
+const sephirothIdle = () =>{
+    $sephiroth.attr('src', './images/Sephiroth/sephiroth-idle.gif')
+}
+
+const checkSephiroth = ()=>{
+    if(sephiroth.health === 0){
+        $sephiroth.attr('src', './images/Sephiroth/sephiroth-dead.gif')
+        isActive = false;
+        console.log("Sephiroth is defeated!")
+    } 
+}
+
 //Sephiroth Test Buttons
 $sephirothAttack.click(()=>{
     sephirothAttacksAll();
@@ -216,6 +239,10 @@ $sephirothAttack.click(()=>{
 
 $sephirothHeal.click(()=>{
     sephiroth.redPotion(sephiroth)
+})
+
+$sephirothMagicAttack.click(()=>{
+    sephirothMagicAttack();
 })
 
 
