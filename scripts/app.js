@@ -18,6 +18,9 @@ class Heroes{
         let damage = Math.floor(Math.random()*(this.maxStr-this.minStr + 1)+this.minStr);
         target.health -= damage
         hit.play();
+        if(target.health < 0){
+            target.health = 0
+        }
         console.log(`${target.name} receieved amount of ${damage} damage!`)
     }
      redPotion(target){
@@ -53,13 +56,16 @@ class Heroes{
             target.health -= magicalDamage
             console.log(`${target.name} received amount of ${magicalDamage} damage!`)
             this.mana -= 70
+            if(target.health < 0){
+                target.health = 0
+            }
 
         } else{
             console.log(`${this.name} doesn't have enough mana points!`)
         }
     } 
-   
-}
+    
+} 
 
 // Heroes and Villains
 
@@ -78,6 +84,7 @@ let $cloudattack = $('.cloud-attack');
 let $heal = $('.heal')
 console.log($heal)
 let currentTurn = 0;
+isActive = true;
 
 
 
@@ -107,6 +114,14 @@ const cloudMagic = () =>{
 const cloudIdle = ()=>{
     $cloud.attr('src', './images/Cloud/cloud-idle.gif')
 }
+
+const checkCloud = ()=>{
+    if(cloud.health === 0){
+        $cloud.attr('src', './images/Cloud/cloud-dead.gif')
+        isActive = false;
+    } console.log("Cloud is dead!")
+}
+
 
 
 //Cloud Related Buttons
