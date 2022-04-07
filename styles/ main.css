@@ -30,26 +30,15 @@ body{
 
 /* END OF BACKGROUND  */
 
-/* Styling Lists and Menus */
-ul{
-    text-decoration: none;
-    list-style-type: none;
-    
-}
 
-
-
-button{
-    cursor: pointer;
-    display: inline-block;
-    
-}
+/* Hero and Villain Placements */
 
 .hero{
-    position: static;
-    justify-content: center;
-    display: flex;
-    padding-top: 16vh;
+  position: static;
+  justify-content: center;
+  display: flex;
+  padding-top: 16vh;
+ 
 }
 
 .sephiroth{
@@ -58,6 +47,32 @@ left: 25vh;
 bottom: 30vh;
 
 }
+.sephiroth-hitbox{
+  text-align: center;
+  position: relative;
+  padding-left: 35vh;
+  bottom: 35vh;
+}
+
+.pic{
+  width: 200px;
+  height: 200px;
+}
+
+
+/* Styling Lists, Menus and Buttons*/
+
+ul{
+    text-decoration: none;
+    list-style-type: none;
+    display: inline-block;
+    
+}
+
+li{
+  list-style: none;
+}
+
 
 .battlemenu{
     text-align: left;
@@ -66,8 +81,9 @@ bottom: 30vh;
 button{
   background-color: rgb(36,88,255);
   border: 1px solid #fefefe;
-  
+  cursor: pointer;
   color: #fefefe;
+  
   
 }
 

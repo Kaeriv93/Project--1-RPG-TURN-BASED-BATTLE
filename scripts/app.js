@@ -110,6 +110,9 @@ let $cloudMagic = $('.cloud-magic'); // Clouds Magic Attack Button
 
 let $cloudMenu = $('.cloud-menu')
 
+let $cloudHitbox = $('li.cloud.hit-box')
+
+
 
 
 
@@ -130,8 +133,7 @@ let $tifaMagic = $('.tifa-magic') // Tifas Magic Attack
 let $tifaItems = $('.tifa-items') //Tifas Items
 
 let $tifaMenu = $('.tifa-menu') //Tifas Battle Menu
-console.log($tifaMenu)
-console.log($tifaAttack)
+
 
 
 
@@ -199,6 +201,10 @@ const checkCloud = ()=>{
         currentTurn = 1
         console.log("Cloud is dead!")
     } 
+    // let displayHit = cloud.maxHealth - cloud.health
+    // $cloudHitbox[0].innerText = displayHit
+    
+
 }
 
 
@@ -300,6 +306,9 @@ const sephirothAttacksAll = ()=>{
         sephirothIdle()
     }, 1500);
     $sephirothMenu.addClass('hidden')
+    
+  
+   
 
 }
 
@@ -359,9 +368,9 @@ $sephirothMagicAttack.click(()=>{
 
 
 //Test Console Logs
-console.log(cloud);
-console.log(tifa)
-console.log(sephiroth)
+// console.log(cloud);
+// console.log(tifa)
+// console.log(sephiroth)
 
 
 
