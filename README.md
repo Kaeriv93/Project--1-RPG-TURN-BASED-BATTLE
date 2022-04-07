@@ -36,3 +36,11 @@ Stretch Goals
 1. I want to be able to display a health/mana bar(not a number) that will adjust according to our heroes health/mana.
 2. I want to be able to animate the attack options and add more than a few skills. (I currently am making a sprite sheet and turining the animations into gifs<-- a lot of fun actually!)
 3. I want our characters or boss to turn slightly red and revert back to their normal color after being hit.
+
+
+
+
+The Journey (Bugs, Fixes, Implementations, Expectations)
+1. We got a lot down on day 1 which I am very proud of! Started off by creating a hero class and apply properties and values. One little thing that I ran into was that anytime our characters fought or healed it would go past their mininum or maximum values. For example if Clouds max hp is 200, but whenever we heal him, that number go behind his max health! So in order to fix this I did google and found an answer on stack overflow. In their example someone didn't want a number to go beyond 0. I then applied this method to my own function and it worked splendidly! So I made an if statement like this. if(this.health < this.maxHealth) then this.health = this.maxHealth. Definitely a game changer!
+
+2. Today I noticed that after a battle animation, our characters do not return to their idle position yet. I do have some working theories that I want to test out. Going to implement the current players turn and whenever it is not current players turn have them revert back to their idle form. This is also day 2 and I really want to work on the styling of our battle menu a bit more and giving it a hidden status to where it only shows when it is their turn only. We are also testing out Sephiroth( our bosses) animations and going to create a function where he will randomly select one of our heroes to attack. I think I can create a target [array] and have him choose between those at random. Really excited to get started on Day 2!
