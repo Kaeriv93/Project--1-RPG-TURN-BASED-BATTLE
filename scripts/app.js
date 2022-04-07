@@ -1,4 +1,7 @@
 
+let currentTurn = 0;
+let isActive = true;
+
 // Hero and Villain Class
 class Heroes{
     constructor(name,health,maxHealth,mana,maxMana,minStr,maxStr,minMag,maxMag,potions,manapotions){
@@ -72,17 +75,19 @@ class Heroes{
 
 //Checking Turns
 const checkTurn = ()=>{
-    if(currentTurn === 0){
+    if(currentTurn === 0 && cloud.health > 0){
         $cloudMenu.removeClass('hidden')
         console.log("Its Cloud's turn!")
         
-    } else if (currentTurn === 1){
-        setTimeout(function(){
-            cloudIdle()
-        }, 2000);
+    } else if (currentTurn === 1 && tifa.health > 0){
         $tifaMenu.removeClass('hidden')
         $cloudMenu.addClass('hidden')
         console.log("It's Tifa's turn")
+  
+    } else if(currentTurn ===2 || tifa.health === 0){
+        $sephirothMenu.removeClass('hidden')
+        $tifaMenu.addClass('hidden')
+        console.log('It`s Sephiroth`s turn')
     }
 }
 // Heroes and Villains
@@ -108,6 +113,12 @@ let $cloudMenu = $('.cloud-menu')
 
 
 
+// Global Variables
+// let currentTurn = 0;
+// let isActive = true;
+checkTurn();
+
+
 
 // Tifa Variables
 let $tifa = $('.tifa');//Tifas Character Model
@@ -125,10 +136,6 @@ console.log($tifaAttack)
 
 
 
-// Global Variables
-let currentTurn = 0;
-let isActive = true;
-checkTurn();
 
 
 // SoundEffects
@@ -143,7 +150,11 @@ const magicSFX = new Audio('./music/soundfx/magic.wav')
 const cloudAttack =() =>{
     cloud.attack(sephiroth);   
     $cloud.attr('src', './images/Cloud/cloud-attack.gif');
+    setTimeout(function(){
+        cloudIdle()
+    }, 1500);
     currentTurn++
+    
     checkTurn();
 
     
@@ -152,6 +163,9 @@ const cloudAttack =() =>{
 const cloudHeal = () =>{
     cloud.redPotion(target);
     $cloud.attr('src', './images/Cloud/cloud-idle.gif')
+    setTimeout(function(){
+        cloudIdle()
+    }, 1000);
     currentTurn++
     checkTurn();
 }
@@ -159,6 +173,9 @@ const cloudHeal = () =>{
 const cloudMagic = () =>{
     cloud.magicAttack(sephiroth);
     $cloud.attr('src', './images/Cloud/cloud-magic.gif')
+    setTimeout(function(){
+        cloudIdle()
+    }, 1500);
     currentTurn++
     checkTurn();
     
@@ -202,6 +219,9 @@ $cloudMagic.click(()=>{
 const tifaAttack = () =>{
     tifa.attack(sephiroth);
     $tifa.attr('src', './images/Tifa/tifa-attack.gif')
+    setTimeout(function(){
+        tifaIdle()
+    }, 1500);
     currentTurn++
     checkTurn();
     
@@ -210,18 +230,24 @@ const tifaAttack = () =>{
 const tifaMagicAttack = ()=>{
     tifa.magicAttack(sephiroth);
     $tifa.attr('src', './images/Tifa/tifa-magic.gif')
+    setTimeout(function(){
+        tifaIdle()
+    }, 1500);
     currentTurn++
     checkTurn();
 }
 ////
 const tifaHeal =() =>{
     tifa.redPotion(target);
+    setTimeout(function(){
+        tifaIdle()
+    }, 1500);
     currentTurn++
     checkTurn();
 }
 ////
 const tifaIdle = () =>{
-    $tifa.attr('src', '.images/Tifa/tifa-idle.gif')
+    $tifa.attr('src', './images/Tifa/tifa-idle.gif')
 }
 ////
 const checkTifa =() =>{
@@ -254,6 +280,7 @@ let $sephiroth = $('.sephiroth') //Sephiroths Character
 let $sephirothAttack =$('.sephiroth-attack') //Sephiroths Attack
 let $sephirothHeal = $('.sephiroth-heal') //Sephiroth Heals
 let $sephirothMagicAttack = $('.sephiroth-magic') //Sephiroth Magic Attack
+let $sephirothMenu = $('.sephiroth-menu')
 
 
 
@@ -267,13 +294,30 @@ const sephirothAttacksAll = ()=>{
     // hit.pause();
     checkCloud();
     checkTifa();
+    currentTurn = 0;
+    checkTurn();
+    setTimeout(function(){
+        sephirothIdle()
+    }, 1500);
+    $sephirothMenu.addClass('hidden')
+
 }
+
 /////
 const sephirothMagicAttack = () =>{
-    sephiroth.magicAttack(tifa)
-    $sephiroth.attr('src', './images/Sephiroth/sephiroth-magic.gif')
-   
+    sephiroth.magicAttack(tifa);
+    $sephiroth.attr('src', './images/Sephiroth/sephiroth-magic.gif');
+    checkCloud();
+    checkTifa();
+    currentTurn = 0;
+    checkTurn();
+    setTimeout(function(){
+        sephirothIdle()
+    }, 1500);
+    $sephirothMenu.addClass('hidden')
 
+
+    
 }
 //////
 const sephirothIdle = () =>{
@@ -291,10 +335,21 @@ const checkSephiroth = ()=>{
 //Sephiroth Test Buttons
 $sephirothAttack.click(()=>{
     sephirothAttacksAll();
+
 })
 /////
 $sephirothHeal.click(()=>{
     sephiroth.redPotion(sephiroth)
+    checkCloud();
+    checkTifa();
+    currentTurn = 0;
+    checkTurn();
+    setTimeout(function(){
+        sephirothIdle()
+    }, 1500);
+    $sephirothMenu.addClass('hidden')
+
+
 })
 /////
 $sephirothMagicAttack.click(()=>{
