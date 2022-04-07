@@ -86,9 +86,9 @@ let $cloudMagic = $('.cloud-magic'); // Clouds Magic Attack Button
 
 // Tifa Variables
 let $tifa = $('.tifa');//Tifas Character Model
-let $tifaAttack = $('.tifa-attack')
-let $tifaMagic = $('.tifa-magic')
-let $tifaItems = $('.tifa-items')
+let $tifaAttack = $('.tifa-attack') //Tifas Attack Button
+let $tifaMagic = $('.tifa-magic') // Tifas Magic Attack
+let $tifaItems = $('.tifa-items') //Tifas Items
 
 console.log($tifaAttack)
 
@@ -200,6 +200,8 @@ let $sephiroth = $('.sephiroth')
 let $sephirothAttack =$('.sephiroth-attack')
 let $sephirothHeal = $('.sephiroth-heal')
 let $sephirothMagicAttack = $('.sephiroth-magic')
+
+
 
 //Sephiroth Attacks & Status
 const sephirothAttacksAll = ()=>{
