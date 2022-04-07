@@ -67,6 +67,11 @@ button:hover{
 }
 
 
+.hidden{
+  display: none;
+  
+}
+
 /* MODAL TEST */
 /* The Modal (background) */
 .modal {
