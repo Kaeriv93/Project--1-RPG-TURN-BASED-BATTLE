@@ -33,9 +33,14 @@ class Heroes{
         target.mana += 50
     }
     magic(target){
-        target.health -= this.magicdmg
+        let magicalDamage = Math.floor(Math.random()*(this.maxMag-this.minMag + 1)+this.minMag);
+        target.health -= magicalDamage
         this.mana -= 70
     } 
+    block(){
+        let reduce = damage - this.block
+        
+    }
 }
 
 // Heroes and Villains
@@ -71,10 +76,21 @@ const cloudAttack =() =>{
     $cloud.attr('src', './images/Cloud/cloud-attack.gif')
 }
 const cloudHeal = () =>{
-    cloud.redPotion(sephiroth);
+    cloud.redPotion(target);
     $cloud.attr('src', './images/Cloud/cloud-idle.gif')
 }
 
+const cloudMagic = () =>{
+    cloud.magic(sephiroth);
+    $cloud.attr('src', './images/Cloud/cloud-magic.gif')
+}
+
+const cloudIdle = ()=>{
+    $cloud.attr('src', './images/Cloud/cloud-idle.gif')
+}
+
+
+//Cloud Related Buttons
 $cloudattack.click(()=>{
     cloudAttack();   
 })
