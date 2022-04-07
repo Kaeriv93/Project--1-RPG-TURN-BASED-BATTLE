@@ -1,11 +1,13 @@
 /* This will be the backdrop when I make one */
 
+
 body{
-    background-color: white;
+    background-color: whitesmoke;
     text-align: center;
     color: white;
     font-family: Verdana, sans-serif;
     font-size: 20px;
+    
                                                 
   
   
@@ -13,7 +15,14 @@ body{
 
 .battleground{
   background-color:green;
-  
+  background-image: url('/battleBackgrounds/castle.png');
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+
+
 }
 
 
@@ -37,16 +46,16 @@ button{
 }
 
 .hero{
-    position: relative;
+    position: static;
     justify-content: center;
     display: flex;
-    padding-top: 15vh;
+    padding-top: 16vh;
 }
 
 .sephiroth{
-position: absolute;
-top: 35vh;
-right: 30vh;
+position: relative;
+left: 25vh;
+bottom: 30vh;
 
 }
 
