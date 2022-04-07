@@ -132,7 +132,8 @@ const checkCloud = ()=>{
     if(cloud.health === 0){
         $cloud.attr('src', './images/Cloud/cloud-dead.gif')
         isActive = false;
-    } console.log("Cloud is dead!")
+        console.log("Cloud is dead!")
+    } 
 }
 
 
@@ -151,6 +152,7 @@ $cloudMagic.click(()=>{
 const tifaAttack = () =>{
     tifa.attack(sephiroth);
     $tifa.attr('src', './images/Tifa/tifa-attack.gif')
+    
 }
 
 const tifaMagicAttack = ()=>{
@@ -170,7 +172,8 @@ const checkTifa =() =>{
     if(tifa.health === 0){
         $tifa.attr('src', './images/Tifa/tifa-dead.gif')
         isActive = false;
-    } console.log("Tifa is dead!")
+        console.log("Tifa is dead!")
+    } 
 }
 
 //Tifa Related Buttons
@@ -185,6 +188,37 @@ $tifaMagic.click(()=>{
 $tifaItems.click(()=>{
     tifaHeal();
 })
+
+
+//Sephiroth Variables
+let $sephiroth = $('.sephiroth')
+let $sephirothAttack =$('.sephiroth-attack')
+let $sephirothHeal = $('.sephiroth-heal')
+console.log($sephirothAttack)
+console.log($sephirothHeal)
+
+//Sephiroth Attacks & Status
+const sephirothAttacksAll = ()=>{
+    sephiroth.attack(tifa)
+    sephiroth.attack(cloud)
+    $sephiroth.attr('src', './images/Sephiroth/sephiroth-attack.gif')
+    // const sephirothSFX = new Audio('./music/soundfx/sword.wav')
+    // sephirothSFX.play();
+    // hit.pause();
+    checkCloud();
+    checkTifa();
+}
+
+//Sephiroth Test Buttons
+$sephirothAttack.click(()=>{
+    sephirothAttacksAll();
+})
+
+$sephirothHeal.click(()=>{
+    sephiroth.redPotion(sephiroth)
+})
+
+
 
 //Test Console Logs
 console.log(cloud);
