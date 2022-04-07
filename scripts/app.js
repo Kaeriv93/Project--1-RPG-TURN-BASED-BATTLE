@@ -51,18 +51,18 @@ class Heroes{
 
     magicAttack(target){
         if(this.mana>= 70){
-
             let magicalDamage = Math.floor(Math.random()*(this.maxMag-this.minMag + 1)+this.minMag);
             target.health -= magicalDamage
-            console.log(`${target.name} received amount of ${magicalDamage} damage!`)
+            console.log(`${target.name} received amount of ${magicalDamage} magic damage!`)
             this.mana -= 70
             if(target.health < 0){
                 target.health = 0
             }
-
+            
         } else{
             console.log(`${this.name} doesn't have enough mana points!`)
         }
+        magicSFX.play();
     } 
     
 } 
@@ -78,21 +78,34 @@ const tifa = new Heroes('Tifa', 150, 150,200,200,12,35,60,120,5,5);
 // END OF CLASS OBJECT
 
 
-// Variables
-let $cloud = $('.cloud');
-let $cloudattack = $('.cloud-attack');
-let $heal = $('.heal')
-console.log($heal)
+// Cloud Variables
+let $cloud = $('.cloud'); //Clouds Character Model
+let $cloudAttack = $('.cloud-attack'); //Clouds Attack Button
+let $cloudMagic = $('.cloud-magic'); // Clouds Magic Attack Button
+
+
+// Tifa Variables
+let $tifa = $('.tifa');//Tifas Character Model
+let $tifaAttack = $('.tifa-attack')
+let $tifaMagic = $('.tifa-magic')
+let $tifaItems = $('.tifa-items')
+
+console.log($tifaAttack)
+
+
+
+
+// Global Variables
 let currentTurn = 0;
-isActive = true;
+let isActive = true;
+
 
 
 
 // SoundEffects
 
 const hit = new Audio('./music/soundfx/hit.wav')
-
-
+const magicSFX = new Audio('./music/soundfx/magic.wav')
 
 
 
@@ -107,7 +120,7 @@ const cloudHeal = () =>{
 }
 
 const cloudMagic = () =>{
-    cloud.magic(sephiroth);
+    cloud.magicAttack(sephiroth);
     $cloud.attr('src', './images/Cloud/cloud-magic.gif')
 }
 
@@ -125,13 +138,55 @@ const checkCloud = ()=>{
 
 
 //Cloud Related Buttons
-$cloudattack.click(()=>{
+$cloudAttack.click(()=>{
     cloudAttack();   
 })
 
+$cloudMagic.click(()=>{
+    cloudMagic();
+})
 
 
+//Tifa Attacks and Status
+const tifaAttack = () =>{
+    tifa.attack(sephiroth);
+    $tifa.attr('src', './images/Tifa/tifa-attack.gif')
+}
 
+const tifaMagicAttack = ()=>{
+    tifa.magicAttack(sephiroth);
+    $tifa.attr('src', './images/Tifa/tifa-magic.gif')
+}
+
+const tifaHeal =() =>{
+    tifa.redPotion(target);
+}
+
+const tifaIdle = () =>{
+    $tifa.attr('src', '.images/Tifa/tifa-idle.gif')
+}
+
+const checkTifa =() =>{
+    if(tifa.health === 0){
+        $tifa.attr('src', './images/Tifa/tifa-dead.gif')
+        isActive = false;
+    } console.log("Tifa is dead!")
+}
+
+//Tifa Related Buttons
+$tifaAttack.click(()=>{
+    tifaAttack();
+})
+
+$tifaMagic.click(()=>{
+    tifaMagicAttack();
+})
+
+$tifaItems.click(()=>{
+    tifaHeal();
+})
+
+//Test Console Logs
 console.log(cloud);
 console.log(tifa)
 console.log(sephiroth)
@@ -162,7 +217,7 @@ console.log(sephiroth)
 // MUSIC AND SOUND EFFECTS
 let $musictest = $('button.musictest');
 
-console.log($musictest)
+
 
 $musictest.click(()=>{
     const battleMusic = new Audio("./music/battle.mp3");
