@@ -218,7 +218,12 @@ const sephirothBlast2 = ()=>{
     let $cloudHP = $('li.cloud-hp') 
     
     let $cloudMP = $('li.cloud-mp')
-    
+
+    let $cloudHeal = $('button.cloud-items')
+
+   
+
+   
     //Displaying Clouds Health and Mana
     
     const cloudStatus= ()=>{
@@ -293,7 +298,7 @@ const cloudAttack =() =>{
     
 }
 /////
-const cloudHeal = () =>{
+const cloudHeal = (target) =>{
     cloud.redPotion(target);
     $cloud.attr('src', './images/Cloud/cloud-idle.gif')
     setTimeout(function(){
@@ -358,6 +363,19 @@ $cloudMagic.click(()=>{
     }
     checkSephiroth();
 })
+
+
+$cloudHeal.click(()=>{
+    if(cloud.potions > 0){
+
+        cloudHeal(cloud)
+
+    }
+    console.log("No more potions!")
+})
+
+
+
 
 
 //Tifa Attacks and Status

@@ -21,7 +21,6 @@ body{
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
-  /* background-attachment: fixed; */
   position: relative;
 
 
@@ -87,6 +86,7 @@ bottom: 25vh;
 .character-profiles li{
 display: inline;
 position: absolute;
+
 
 }
 .cloud-hp{
@@ -166,12 +166,8 @@ button:hover{
 
 
 /* Potions */
-.red{
-  background-color: red;
-}
-
-.blue{
-  background-color: blue;
+.healing{
+  display: none;
 }
 
 
