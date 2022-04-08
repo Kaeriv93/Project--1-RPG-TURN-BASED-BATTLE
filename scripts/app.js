@@ -149,9 +149,9 @@ const checkTurn = ()=>{
 
 const sephiroth = new Heroes('Sephiroth',2000,2000,4000,4000,10,50,30,70,15,);
 
-const cloud = new Heroes('Cloud', 200, 200, 100, 100, 50,90,60,130,5,5);
+const cloud = new Heroes('Cloud', 200, 200, 100, 100, 50,90,60,220,5,5);
 
-const tifa = new Heroes('Tifa', 150, 150,200,200,25,60,120,220,5,5);
+const tifa = new Heroes('Tifa', 150, 150,200,200,25,60,180,300,5,5);
 
 // END OF CLASS OBJECT
 
@@ -247,13 +247,15 @@ let $tifaAttack = $('.tifa-attack') //Tifas Attack Button
 
 let $tifaMagic = $('.tifa-magic') // Tifas Magic Attack
 
-let $tifaItems = $('.tifa-items') //Tifas Items
+let $tifaItems = $('button.tifa-items') //Tifas Items
 
 let $tifaMenu = $('.tifa-menu') //Tifas Battle Menu
 
 let $tifasHP = $('li.tifas-hp') //Tifas HP
 
 let $tifasMP = $('li.tifas-mp') //Tifas MP
+
+
 
 //Displaying Tifas Health and Mana
 
@@ -424,8 +426,11 @@ $tifaMagic.click(()=>{
     checkSephiroth();
 })
 ////
-$tifaItems.click(()=>{
-    tifaHeal();
+
+
+
+$tifaItems[0].click(()=>{
+   
 })
 
 
@@ -435,8 +440,7 @@ let $sephirothAttack =$('.sephiroth-attack') //Sephiroths Attack
 let $sephirothHeal = $('.sephiroth-heal') //Sephiroth Heals
 let $sephirothMagicAttack = $('.sephiroth-magic') //Sephiroth Magic Attack
 let $sephirothMenu = $('.sephiroth-menu')
-// console.log(sephirothChoices)
-// console.log(randomNumber)
+
 
 
 

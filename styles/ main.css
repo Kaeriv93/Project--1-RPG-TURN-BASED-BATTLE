@@ -164,6 +164,17 @@ button:hover{
   color: white;
 }
 
+
+/* Potions */
+.red{
+  background-color: red;
+}
+
+.blue{
+  background-color: blue;
+}
+
+
 /* MODAL TEST */
 /* The Modal (background) */
 .modal {
