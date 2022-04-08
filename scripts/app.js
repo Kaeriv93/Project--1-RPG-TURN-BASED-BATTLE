@@ -81,30 +81,29 @@ class Heroes{
 const checkTurn = ()=>{
     if(currentTurn === 0 && cloud.health > 0){
         $cloudMenu.removeClass('hidden')
-        console.log("Its Cloud's turn!")
-        if(cloud.health === 0){
-            currentTurn = 1;
-            console.log("It's Tifa's turn")
-        } 
-       
-    } else if (currentTurn === 1 && tifa.health > 0){
+        console.log('It`s Cloud`s Turn')
+    }else if(cloud.health === 0 && currentTurn === 0){
+        currentTurn = 1;
+        console.log(`Cloud cannot make a turn`)
+    } if(currentTurn === 1 && tifa.health > 0){
         $tifaMenu.removeClass('hidden')
         $cloudMenu.addClass('hidden')
-        console.log("It's Tifa's turn")
-        if(tifa.health === 0){
-            currentTurn = 2;
-            console.log("It's Sephiroth's Turn")
-        }
-     
-    }else if(currentTurn ===2 && sephiroth.health > 0){
+        console.log(`It's Tifa's Turn`)
+    } else if(currentTurn === 1 && tifa.health === 0){
+        currentTurn = 2;
+        console.log(`It's Sephiroth's Turn`)
+    } if(currentTurn === 2 && cloud.health === 0 && tifa.health === 0){
+        alert('YOU LOSE')
+    } else if(currentTurn === 0 && sephiroth.health === 0 || currentTurn === 1 && sephiroth.health === 0 || currentTurn === 2 && sephiroth.health === 0){
+        alert(`YOU WIN!`)
+    } else if(currentTurn === 2 && sephiroth.health > 0){
         $tifaMenu.addClass('hidden')
-        // $sephirothMenu.removeClass('hidden')
-        console.log('It`s Sephiroth`s turn')
-        setTimeout(function(){
+        console.log(`It's Sephiroth's Turn`)
+        setTimeout(() => {
             sephirothsMove();
         }, 1500);
         currentTurn = 0;
-    } 
+    }
 }
 
 // Heroes and Villains
