@@ -34,6 +34,8 @@ class Heroes{
                      target.health =  target.maxHealth
                  }
                  console.log(`${target.name} recovered health points! `)
+                 tifasStatus();
+                 cloudStatus();
                  
              } 
           this.potions--
@@ -43,13 +45,15 @@ class Heroes{
     bluePotion(target){
         if(this.manapotions > 0 && target.mana < target.maxMana ){
             target.mana += 50
-         if(target.mana < target.maxMana){
+         if(target.mana > target.maxMana){
              target.mana = target.maxMana
          }   
 
         } 
         this.manapotions-- 
-        console.log(`${target} recovered mana points!`)
+        console.log(`${target.name} recovered mana points!`)
+        tifasStatus();
+        cloudStatus();
     }  
 
     magicAttack(target){
@@ -78,13 +82,21 @@ const checkTurn = ()=>{
     if(currentTurn === 0 && cloud.health > 0){
         $cloudMenu.removeClass('hidden')
         console.log("Its Cloud's turn!")
-        
+        if(cloud.health === 0){
+            currentTurn = 1;
+            console.log("It's Tifa's turn")
+        } 
+       
     } else if (currentTurn === 1 && tifa.health > 0){
         $tifaMenu.removeClass('hidden')
         $cloudMenu.addClass('hidden')
         console.log("It's Tifa's turn")
-  
-    }else if(currentTurn ===2 || tifa.health === 0){
+        if(tifa.health === 0){
+            currentTurn = 2;
+            console.log("It's Sephiroth's Turn")
+        }
+     
+    }else if(currentTurn ===2 && sephiroth.health > 0){
         $tifaMenu.addClass('hidden')
         // $sephirothMenu.removeClass('hidden')
         console.log('It`s Sephiroth`s turn')
@@ -92,15 +104,16 @@ const checkTurn = ()=>{
             sephirothsMove();
         }, 1500);
         currentTurn = 0;
-    }
+    } 
 }
+
 // Heroes and Villains
 
 const sephiroth = new Heroes('Sephiroth',2000,2000,400,400,10,50,30,70,5,5);
 
-const cloud = new Heroes('Cloud', 200, 200, 100, 100, 20,50,30,80,5,5);
+const cloud = new Heroes('Cloud', 200, 200, 100, 100, 50,90,60,130,5,5);
 
-const tifa = new Heroes('Tifa', 150, 150,200,200,12,35,60,120,5,5);
+const tifa = new Heroes('Tifa', 150, 150,200,200,25,60,120,220,5,5);
 
 // END OF CLASS OBJECT
 
@@ -129,12 +142,6 @@ $cloudMP[0].innerText = `MP:${cloud.mana}/100`
 }
 
 
-// $cloudHP[0].innerText = `HP:${cloud.health}/200`
-
-// let cloudCurrentHP = $cloudHP[0].innerText
-// $cloudMP[0].innerText = `MP:${cloud.mana}/100`
-
-// let cloudCurrentMP = $cloudHP[0].innerText
 
 
 
@@ -144,9 +151,7 @@ $cloudMP[0].innerText = `MP:${cloud.mana}/100`
 
 
 
-// Global Variables
-// let currentTurn = 0;
-// let isActive = true;
+// Starts Game By Checking Turns
 checkTurn();
 
 
@@ -163,18 +168,18 @@ let $tifaItems = $('.tifa-items') //Tifas Items
 
 let $tifaMenu = $('.tifa-menu') //Tifas Battle Menu
 
-let $tifasHP = $('li.tifas-hp')
+let $tifasHP = $('li.tifas-hp') //Tifas HP
 
-let $tifasMP = $('li.tifas-mp')
+let $tifasMP = $('li.tifas-mp') //Tifas MP
 
-//Displaying Clouds Health and Mana
+//Displaying Tifas Health and Mana
 
 const tifasStatus= ()=>{
    
 $tifasHP[0].innerText = `HP:${tifa.health}/150`
 $tifasMP[0].innerText = `MP:${tifa.mana}/200`
 }
-
+////////////////////////////////////////////////////
 
 
 
@@ -352,9 +357,9 @@ const sephirothAttacksAll = ()=>{
     sephiroth.attack(tifa)
     sephiroth.attack(cloud)
     $sephiroth.attr('src', './images/Sephiroth/sephiroth-attack.gif')
-    // const sephirothSFX = new Audio('./music/soundfx/sword.wav')
-    // sephirothSFX.play();
-    // hit.pause();
+    hit.pause();
+    const sephirothSFX = new Audio('./music/soundfx/slash.ogg')
+    sephirothSFX.play();
     checkCloud();
     checkTifa();
     currentTurn = 0;
@@ -374,8 +379,14 @@ const sephirothMagicAttack = () =>{
     let randomNumber = Math.floor(Math.random()*2);
     if(randomNumber===0){
         sephiroth.magicAttack(cloud);
+        if(cloud.health===0){
+            sephiroth.magicAttack(tifa);
+        }
     } else if (randomNumber===1){
         sephiroth.magicAttack(tifa);
+        if(tifa.health === 0){
+            sephiroth.magicAttack(cloud);
+        }
     }
     // sephiroth.magicAttack();
     $sephiroth.attr('src', './images/Sephiroth/sephiroth-magic.gif');
