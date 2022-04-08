@@ -24,7 +24,7 @@ class Heroes{
         if(target.health < 0){
             target.health = 0
         }
-        console.log(`${target.name} receieved amount of ${damage} damage!`)
+        console.log(`${target.name} receieved ${damage} amount of damage!`)
     }
      redPotion(target){
               
@@ -56,7 +56,7 @@ class Heroes{
         if(this.mana>= 70){
             let magicalDamage = Math.floor(Math.random()*(this.maxMag-this.minMag + 1)+this.minMag);
             target.health -= magicalDamage
-            console.log(`${target.name} received amount of ${magicalDamage} magic damage!`)
+            console.log(`${target.name} received ${magicalDamage} amount of magic damage!`)
             this.mana -= 70
             if(target.health < 0){
                 target.health = 0
@@ -115,6 +115,32 @@ let $cloudMagic = $('.cloud-magic'); // Clouds Magic Attack Button
 let $cloudMenu = $('.cloud-menu')
 
 let $cloudHitbox = $('li.cloud.hit-box')
+
+let $cloudHP = $('li.cloud-hp')
+
+let $cloudMP = $('li.cloud-mp')
+
+console.log($cloud)
+
+//Displaying Clouds Health and Mana
+
+const cloudStatus= ()=>{
+   
+$cloudHP[0].innerText = `HP:${cloud.health}/200`
+$cloudMP[0].innerText = `MP:${cloud.mana}/100`
+}
+
+
+// $cloudHP[0].innerText = `HP:${cloud.health}/200`
+
+// let cloudCurrentHP = $cloudHP[0].innerText
+// $cloudMP[0].innerText = `MP:${cloud.mana}/100`
+
+// let cloudCurrentMP = $cloudHP[0].innerText
+
+
+
+
 
 
 
@@ -183,6 +209,7 @@ const cloudMagic = () =>{
     setTimeout(function(){
         cloudIdle()
     }, 1500);
+    cloudStatus();
     currentTurn++
     checkTurn();
     
@@ -206,9 +233,9 @@ const checkCloud = ()=>{
         currentTurn = 1
         console.log("Cloud is dead!")
     } 
-    // let displayHit = cloud.maxHealth - cloud.health
-    // $cloudHitbox[0].innerText = displayHit
-    
+    $cloudHP[0].innerText = `HP:${cloud.health}/200`
+
+ 
 
 }
 
@@ -220,7 +247,9 @@ $cloudAttack.click(()=>{
     checkSephiroth();   
 })
 /////
+
 $cloudMagic.click(()=>{
+    
     cloudMagic();
     checkSephiroth();
 })
@@ -377,30 +406,30 @@ const sephirothsMove =()=>{
 
 ///
 //Sephiroth Test Buttons
-$sephirothAttack.click(()=>{
-    sephirothAttacksAll();
+// $sephirothAttack.click(()=>{
+//     sephirothAttacksAll();
     
-})
-/////
-$sephirothHeal.click(()=>{
-    sephiroth.redPotion(sephiroth)
-    checkCloud();
-    checkTifa();
-    currentTurn = 0;
-    checkTurn();
-    setTimeout(function(){
-        sephirothIdle()
-    }, 1500);
-    $sephirothMenu.addClass('hidden')
+// })
+// /////
+// $sephirothHeal.click(()=>{
+//     sephiroth.redPotion(sephiroth)
+//     checkCloud();
+//     checkTifa();
+//     currentTurn = 0;
+//     checkTurn();
+//     setTimeout(function(){
+//         sephirothIdle()
+//     }, 1500);
+//     $sephirothMenu.addClass('hidden')
     
     
-})
-/////
-$sephirothMagicAttack.click(()=>{
-    sephirothMagicAttack();
-})
+// })
+// /////
+// $sephirothMagicAttack.click(()=>{
+//     sephirothMagicAttack();
+// })
 
-
+// $sephiroth.flash()
 
 //Test Console Logs
 // console.log(cloud);

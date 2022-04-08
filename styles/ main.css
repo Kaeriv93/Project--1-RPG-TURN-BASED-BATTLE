@@ -21,7 +21,8 @@ body{
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  /* background-attachment: fixed; */
+  position: relative;
 
 
 
@@ -43,10 +44,18 @@ body{
  
 }
 
+/* This will show animations attacking Sephiroth */
+.skills{
+  position: relative;
+  z-index: 1;
+  left: 38vh;
+  bottom: 25vh;
+}
+
 .sephiroth{
 position: relative;
-left: 25vh;
-bottom: 30vh;
+left: 20vh;
+bottom: 25vh;
 
 }
 .sephiroth-hitbox{
@@ -59,21 +68,26 @@ bottom: 30vh;
 .character-profiles{
   float:left;
   flex-wrap: wrap;
+
 }
 
 .character-profiles li{
 display: inline;
 position: absolute;
+
 }
 .cloud-hp{
   left: 7vh;
 }
 .cloud-mp{
-  left:20vh;
+  left:22vh;
 }
 
 .tifas-hp{
   left: 40vh;
+}
+.tifas-mp{
+ left: 55vh;
 }
 
 .pic{
