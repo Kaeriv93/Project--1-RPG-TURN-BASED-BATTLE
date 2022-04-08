@@ -84,10 +84,14 @@ const checkTurn = ()=>{
         $cloudMenu.addClass('hidden')
         console.log("It's Tifa's turn")
   
-    } else if(currentTurn ===2 || tifa.health === 0){
-        $sephirothMenu.removeClass('hidden')
+    }else if(currentTurn ===2 || tifa.health === 0){
         $tifaMenu.addClass('hidden')
+        // $sephirothMenu.removeClass('hidden')
         console.log('It`s Sephiroth`s turn')
+        setTimeout(function(){
+            sephirothsMove();
+        }, 1500);
+        currentTurn = 0;
     }
 }
 // Heroes and Villains
@@ -120,6 +124,7 @@ let $cloudHitbox = $('li.cloud.hit-box')
 // let currentTurn = 0;
 // let isActive = true;
 checkTurn();
+
 
 
 
@@ -287,10 +292,17 @@ let $sephirothAttack =$('.sephiroth-attack') //Sephiroths Attack
 let $sephirothHeal = $('.sephiroth-heal') //Sephiroth Heals
 let $sephirothMagicAttack = $('.sephiroth-magic') //Sephiroth Magic Attack
 let $sephirothMenu = $('.sephiroth-menu')
+// console.log(sephirothChoices)
+// console.log(randomNumber)
+
+
 
 
 
 //Sephiroth Attacks & Status
+
+
+
 const sephirothAttacksAll = ()=>{
     sephiroth.attack(tifa)
     sephiroth.attack(cloud)
@@ -307,14 +319,20 @@ const sephirothAttacksAll = ()=>{
     }, 1500);
     $sephirothMenu.addClass('hidden')
     
-  
-   
-
+    
+    
+    
 }
 
 /////
 const sephirothMagicAttack = () =>{
-    sephiroth.magicAttack(tifa);
+    let randomNumber = Math.floor(Math.random()*2);
+    if(randomNumber===0){
+        sephiroth.magicAttack(cloud);
+    } else if (randomNumber===1){
+        sephiroth.magicAttack(tifa);
+    }
+    // sephiroth.magicAttack();
     $sephiroth.attr('src', './images/Sephiroth/sephiroth-magic.gif');
     checkCloud();
     checkTifa();
@@ -324,8 +342,8 @@ const sephirothMagicAttack = () =>{
         sephirothIdle()
     }, 1500);
     $sephirothMenu.addClass('hidden')
-
-
+    
+    
     
 }
 //////
@@ -340,11 +358,28 @@ const checkSephiroth = ()=>{
         console.log("Sephiroth is defeated!")
     } 
 }
-/////
+
+const sephirothsMove =()=>{
+    let randomNumber = Math.floor(Math.random()*3);
+    if(randomNumber===0){
+        sephirothAttacksAll();
+    } else if (randomNumber===1){
+        sephirothMagicAttack();
+    }else if (randomNumber===2){
+        sephiroth.redPotion(sephiroth)
+        
+    }
+    checkTurn();
+    checkCloud();
+    checkTifa();
+}
+
+
+///
 //Sephiroth Test Buttons
 $sephirothAttack.click(()=>{
     sephirothAttacksAll();
-
+    
 })
 /////
 $sephirothHeal.click(()=>{
@@ -357,8 +392,8 @@ $sephirothHeal.click(()=>{
         sephirothIdle()
     }, 1500);
     $sephirothMenu.addClass('hidden')
-
-
+    
+    
 })
 /////
 $sephirothMagicAttack.click(()=>{
