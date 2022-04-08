@@ -108,7 +108,7 @@ const checkTurn = ()=>{
 
 // Heroes and Villains
 
-const sephiroth = new Heroes('Sephiroth',2000,2000,400,400,10,50,30,70,5,5);
+const sephiroth = new Heroes('Sephiroth',2000,2000,4000,4000,10,50,30,70,15,);
 
 const cloud = new Heroes('Cloud', 200, 200, 100, 100, 50,90,60,130,5,5);
 
@@ -117,6 +117,20 @@ const tifa = new Heroes('Tifa', 150, 150,200,200,25,60,120,220,5,5);
 // END OF CLASS OBJECT
 
 
+//Skills
+let $skills = $('.skills')
+
+const cloudsFireBall = () =>{
+
+        const fireBall = new Audio('/music/soundfx/explode.ogg')
+        fireBall.play();
+        $skills.removeClass('hidden')
+        setTimeout(()=>{
+            $skills.addClass('hidden');
+        }, 1000);
+
+}
+
 // Cloud Variables
 let $cloud = $('.cloud'); //Clouds Character Model
 
@@ -124,11 +138,11 @@ let $cloudAttack = $('.cloud-attack'); //Clouds Attack Button
 
 let $cloudMagic = $('.cloud-magic'); // Clouds Magic Attack Button
 
-let $cloudMenu = $('.cloud-menu')
+let $cloudMenu = $('.cloud-menu') //Clouds Menu
 
 let $cloudHitbox = $('li.cloud.hit-box')
 
-let $cloudHP = $('li.cloud-hp')
+let $cloudHP = $('li.cloud-hp') 
 
 let $cloudMP = $('li.cloud-mp')
 
@@ -222,6 +236,8 @@ const cloudHeal = () =>{
 const cloudMagic = () =>{
     cloud.magicAttack(sephiroth);
     $cloud.attr('src', './images/Cloud/cloud-magic.gif')
+    
+    cloudsFireBall();
     setTimeout(function(){
         cloudIdle()
     }, 1500);
@@ -231,10 +247,7 @@ const cloudMagic = () =>{
     
 }
 
-///
-// setTimeout(function(){
-//     cloudIdle()
-// }, 1000);
+
 
 const cloudIdle = ()=>{
     $cloud.attr('src', './images/Cloud/cloud-idle.gif')
@@ -249,6 +262,7 @@ const checkCloud = ()=>{
         currentTurn = 1
         console.log("Cloud is dead!")
     } 
+
     $cloudHP[0].innerText = `HP:${cloud.health}/200`
 
  
@@ -265,8 +279,12 @@ $cloudAttack.click(()=>{
 /////
 
 $cloudMagic.click(()=>{
-    
-    cloudMagic();
+    if(cloud.mana>=70){
+        cloudMagic();
+
+    }else if(cloud.mana <70){
+        console.log("Not enough mana!")
+    }
     checkSephiroth();
 })
 
@@ -326,7 +344,14 @@ $tifaAttack.click(()=>{
 })
 /////
 $tifaMagic.click(()=>{
-    tifaMagicAttack();
+
+    if(tifa.mana>=70){
+        tifaMagicAttack();
+
+    }else if(tifa.mana <70){
+        console.log("Not enough mana!")
+    }
+   
     checkSephiroth();
 })
 ////
@@ -376,18 +401,16 @@ const sephirothAttacksAll = ()=>{
 /////
 const sephirothMagicAttack = () =>{
     let randomNumber = Math.floor(Math.random()*2);
-    if(randomNumber===0){
+    if(randomNumber===0 && cloud.health > 0){
         sephiroth.magicAttack(cloud);
-        if(cloud.health===0){
-            sephiroth.magicAttack(tifa);
-        }
-    } else if (randomNumber===1){
-        sephiroth.magicAttack(tifa);
-        if(tifa.health === 0){
-            sephiroth.magicAttack(cloud);
-        }
+    }else if(randomNumber===0 && cloud.health === 0){
+        sephiroth.magicAttack(tifa)
+    }if(randomNumber === 1 && tifa.health > 0){
+        sephiroth.magicAttack(tifa)
+    }else if(randomNumber === 1 && tifa.health ===0){
+        sephiroth.magicAttack(cloud)
     }
-    // sephiroth.magicAttack();
+  
     $sephiroth.attr('src', './images/Sephiroth/sephiroth-magic.gif');
     checkCloud();
     checkTifa();
@@ -422,6 +445,10 @@ const sephirothsMove =()=>{
         sephirothMagicAttack();
     }else if (randomNumber===2){
         sephiroth.redPotion(sephiroth)
+        $sephiroth.attr('src', './images/Sephiroth/sephiroth-item.gif')
+        setTimeout(function(){
+            sephirothIdle()
+        }, 1500);
         
     }
     checkTurn();
@@ -430,37 +457,6 @@ const sephirothsMove =()=>{
 }
 
 
-///
-//Sephiroth Test Buttons
-// $sephirothAttack.click(()=>{
-//     sephirothAttacksAll();
-    
-// })
-// /////
-// $sephirothHeal.click(()=>{
-//     sephiroth.redPotion(sephiroth)
-//     checkCloud();
-//     checkTifa();
-//     currentTurn = 0;
-//     checkTurn();
-//     setTimeout(function(){
-//         sephirothIdle()
-//     }, 1500);
-//     $sephirothMenu.addClass('hidden')
-    
-    
-// })
-// /////
-// $sephirothMagicAttack.click(()=>{
-//     sephirothMagicAttack();
-// })
-
-// $sephiroth.flash()
-
-//Test Console Logs
-// console.log(cloud);
-// console.log(tifa)
-// console.log(sephiroth)
 
 
 
