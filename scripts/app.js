@@ -120,8 +120,6 @@ let $cloudHP = $('li.cloud-hp')
 
 let $cloudMP = $('li.cloud-mp')
 
-console.log($cloud)
-
 //Displaying Clouds Health and Mana
 
 const cloudStatus= ()=>{
@@ -165,6 +163,18 @@ let $tifaItems = $('.tifa-items') //Tifas Items
 
 let $tifaMenu = $('.tifa-menu') //Tifas Battle Menu
 
+let $tifasHP = $('li.tifas-hp')
+
+let $tifasMP = $('li.tifas-mp')
+
+//Displaying Clouds Health and Mana
+
+const tifasStatus= ()=>{
+   
+$tifasHP[0].innerText = `HP:${tifa.health}/150`
+$tifasMP[0].innerText = `MP:${tifa.mana}/200`
+}
+
 
 
 
@@ -199,6 +209,8 @@ const cloudHeal = () =>{
     setTimeout(function(){
         cloudIdle()
     }, 1000);
+    cloudStatus();
+    tifasStatus();
     currentTurn++
     checkTurn();
 }
@@ -273,6 +285,7 @@ const tifaMagicAttack = ()=>{
     setTimeout(function(){
         tifaIdle()
     }, 1500);
+    tifasStatus();
     currentTurn++
     checkTurn();
 }
@@ -282,6 +295,8 @@ const tifaHeal =() =>{
     setTimeout(function(){
         tifaIdle()
     }, 1500);
+    tifasStatus();
+    cloudStatus();
     currentTurn++
     checkTurn();
 }
@@ -297,6 +312,7 @@ const checkTifa =() =>{
         $tifaMenu.addClass('hidden')
         console.log("Tifa is dead!")
     } 
+    $tifasHP[0].innerText = `HP:${tifa.health}/150`
 }
 
 //Tifa Related Buttons
