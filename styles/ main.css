@@ -56,9 +56,28 @@ bottom: 30vh;
   bottom: 35vh;
 }
 
+.character-profiles{
+  float:left;
+  flex-wrap: wrap;
+}
+
+.character-profiles li{
+display: inline;
+position: absolute;
+}
+.cloud-hp{
+  left: 7vh;
+}
+.cloud-mp{
+  left:20vh;
+}
+
+.tifas-hp{
+  left: 40vh;
+}
+
 .pic{
 float: left;
-display: inline;
  padding: 15px 100px;
 }
 
