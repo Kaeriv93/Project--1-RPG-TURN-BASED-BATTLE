@@ -65,6 +65,19 @@ bottom: 25vh;
   bottom: 35vh;
 }
 
+
+
+/* This will show magic hitting our characters */
+.blast1, .blast2{
+  position: relative;
+  z-index: 1;
+  top: 30vh;
+  right: 5vh;
+}
+
+
+
+/* Our Heroes Health and Mana Status */
 .character-profiles{
   float:left;
   flex-wrap: wrap;

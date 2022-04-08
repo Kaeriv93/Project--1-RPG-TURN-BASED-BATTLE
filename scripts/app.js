@@ -1,6 +1,13 @@
-
+//Current Turn
 let currentTurn = 0;
-let isActive = true;
+
+
+
+//Intro Audio
+const heal = new Audio('./music/soundfx/heal.ogg')
+const gameOver = new Audio('./music/gameover.mp3')
+const battleMusic = new Audio("./music/battle.mp3");
+const victory = new Audio('./music/victory.mp3')
 
 // Hero and Villain Class
 class Heroes{
@@ -34,6 +41,7 @@ class Heroes{
                      target.health =  target.maxHealth
                  }
                  console.log(`${target.name} recovered health points! `)
+                 heal.play();
                  tifasStatus();
                  cloudStatus();
                  
@@ -50,6 +58,7 @@ class Heroes{
          }   
 
         } 
+        heal.play();
         this.manapotions-- 
         console.log(`${target.name} recovered mana points!`)
         tifasStatus();
@@ -94,8 +103,12 @@ const checkTurn = ()=>{
         console.log(`It's Sephiroth's Turn`)
     } if(currentTurn === 2 && cloud.health === 0 && tifa.health === 0){
         alert('YOU LOSE')
+        battleMusic.pause();
+        gameOver.play();
     } else if(currentTurn === 0 && sephiroth.health === 0 || currentTurn === 1 && sephiroth.health === 0 || currentTurn === 2 && sephiroth.health === 0){
         alert(`YOU WIN!`)
+        battleMusic.pause();
+        victory.play();
     } else if(currentTurn === 2 && sephiroth.health > 0){
         $tifaMenu.addClass('hidden')
         console.log(`It's Sephiroth's Turn`)
@@ -119,49 +132,82 @@ const tifa = new Heroes('Tifa', 150, 150,200,200,25,60,120,220,5,5);
 
 //Skills
 let $skills = $('.skills')
+let $blast1 = $('.blast1')
+let $blast2 = $('.blast2')
+
+
 
 const cloudsFireBall = () =>{
 
         const fireBall = new Audio('/music/soundfx/explode.ogg')
         fireBall.play();
         $skills.removeClass('hidden')
+        $skills.attr('src', './images/animations/explosion.gif')
         setTimeout(()=>{
             $skills.addClass('hidden');
-        }, 1000);
+        }, 1000);    
+        
+    }        
+    
+    
+    const tifasLightning = ()=>{
+        const lightning = new Audio('/music/soundfx/tifa-magic.ogg')
+        lightning.play();
+        $skills.removeClass('hidden')
+        $skills.attr('src', './images/animations/tifas-magic.gif')
+        setTimeout(()=>{
+            $skills.addClass('hidden');
+        }, 1000);    
+    }    
+    
+    
+    const sephirothBlast1 = ()=>{
+        const blast = new Audio('/music/soundfx/sephiroth-magic.ogg')
+        blast.play();
+        $blast1.removeClass('hidden')
+    setTimeout(()=>{
+            $blast1.addClass('hidden');
+        }, 1200);
+    }
+    
 
-}
-
-// Cloud Variables
-let $cloud = $('.cloud'); //Clouds Character Model
-
-let $cloudAttack = $('.cloud-attack'); //Clouds Attack Button
-
-let $cloudMagic = $('.cloud-magic'); // Clouds Magic Attack Button
-
-let $cloudMenu = $('.cloud-menu') //Clouds Menu
-
-let $cloudHitbox = $('li.cloud.hit-box')
-
-let $cloudHP = $('li.cloud-hp') 
-
-let $cloudMP = $('li.cloud-mp')
-
-//Displaying Clouds Health and Mana
-
-const cloudStatus= ()=>{
-   
-$cloudHP[0].innerText = `HP:${cloud.health}/200`
-$cloudMP[0].innerText = `MP:${cloud.mana}/100`
-}
-
-
-
-
-
-
-
-
-
+const sephirothBlast2 = ()=>{
+    const blast = new Audio('/music/soundfx/sephiroth-magic.ogg')
+    blast.play();
+    $blast2.removeClass('hidden')
+    setTimeout(()=>{
+            $blast2.addClass('hidden');
+        }, 1200);
+    }
+    
+    // Cloud Variables
+    let $cloud = $('.cloud'); //Clouds Character Model
+    
+    let $cloudAttack = $('.cloud-attack'); //Clouds Attack Button
+    
+    let $cloudMagic = $('.cloud-magic'); // Clouds Magic Attack Button
+    
+    let $cloudMenu = $('.cloud-menu') //Clouds Menu
+    
+    let $cloudHitbox = $('li.cloud.hit-box')
+    
+    let $cloudHP = $('li.cloud-hp') 
+    
+    let $cloudMP = $('li.cloud-mp')
+    
+    //Displaying Clouds Health and Mana
+    
+    const cloudStatus= ()=>{
+        
+        $cloudHP[0].innerText = `HP:${cloud.health}/200`
+        $cloudMP[0].innerText = `MP:${cloud.mana}/100`
+    }
+    
+    
+    
+    
+    
+    
 
 
 // Starts Game By Checking Turns
@@ -257,7 +303,6 @@ const cloudIdle = ()=>{
 const checkCloud = ()=>{
     if(cloud.health === 0){
         $cloud.attr('src', './images/Cloud/cloud-dead.gif')
-        isActive = false;
         $cloudMenu.addClass('hidden')
         currentTurn = 1
         console.log("Cloud is dead!")
@@ -304,6 +349,7 @@ const tifaAttack = () =>{
 const tifaMagicAttack = ()=>{
     tifa.magicAttack(sephiroth);
     $tifa.attr('src', './images/Tifa/tifa-magic.gif')
+    tifasLightning();
     setTimeout(function(){
         tifaIdle()
     }, 1500);
@@ -330,7 +376,6 @@ const tifaIdle = () =>{
 const checkTifa =() =>{
     if(tifa.health === 0){
         $tifa.attr('src', './images/Tifa/tifa-dead.gif')
-        isActive = false;
         $tifaMenu.addClass('hidden')
         console.log("Tifa is dead!")
     } 
@@ -403,12 +448,16 @@ const sephirothMagicAttack = () =>{
     let randomNumber = Math.floor(Math.random()*2);
     if(randomNumber===0 && cloud.health > 0){
         sephiroth.magicAttack(cloud);
+        sephirothBlast1();
     }else if(randomNumber===0 && cloud.health === 0){
         sephiroth.magicAttack(tifa)
+        sephirothBlast2();
     }if(randomNumber === 1 && tifa.health > 0){
         sephiroth.magicAttack(tifa)
+        sephirothBlast2();
     }else if(randomNumber === 1 && tifa.health ===0){
         sephiroth.magicAttack(cloud)
+        sephirothBlast1();
     }
   
     $sephiroth.attr('src', './images/Sephiroth/sephiroth-magic.gif');
@@ -486,8 +535,8 @@ let $musictest = $('button.musictest');
 
 
 
+
 $musictest.click(()=>{
-    const battleMusic = new Audio("./music/battle.mp3");
     battleMusic.play();
     
 })
