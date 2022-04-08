@@ -146,6 +146,24 @@ button:hover{
   
 }
 
+
+/* Victory and Losses */
+
+.win{
+  font-size: 50px;
+  color: white;
+}
+
+.lose{
+  font-size: 50px;
+  color: red;
+}
+
+
+.sephiroth-hitbox{
+  color: white;
+}
+
 /* MODAL TEST */
 /* The Modal (background) */
 .modal {

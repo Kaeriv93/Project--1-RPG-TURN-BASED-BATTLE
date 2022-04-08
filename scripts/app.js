@@ -1,5 +1,9 @@
 //Current Turn
 let currentTurn = 0;
+let $status = $('.gamestatus')
+let $hitbox = $('.sephiroth-hitbox')
+
+
 
 
 
@@ -28,11 +32,22 @@ class Heroes{
         let damage = Math.floor(Math.random()*(this.maxStr-this.minStr + 1)+this.minStr);
         target.health -= damage
         hit.play();
-        if(target.health < 0){
+        if(target.name === 'Sephiroth'){
+            $hitbox[0].innerText = damage
+            setTimeout(()=>{
+                $hitbox[0].innerText =""
+            },1000)
+            if(sephiroth.health < 0){
+                sephiroth.health = 0
+            }
+        }
+        else if(target.health < 0){
             target.health = 0
         }
         console.log(`${target.name} receieved ${damage} amount of damage!`)
     }
+
+    
      redPotion(target){
               
              if(target.health > 0 && this.potions > 0 && target.health < target.maxHealth ){
@@ -66,19 +81,26 @@ class Heroes{
     }  
 
     magicAttack(target){
-        if(this.mana>= 70){
             let magicalDamage = Math.floor(Math.random()*(this.maxMag-this.minMag + 1)+this.minMag);
             target.health -= magicalDamage
             console.log(`${target.name} received ${magicalDamage} amount of magic damage!`)
+            magicSFX.play();
             this.mana -= 70
-            if(target.health < 0){
+            
+            
+            if(target.name === 'Sephiroth'){
+                $hitbox[0].innerText = magicalDamage
+                setTimeout(()=>{
+                    $hitbox[0].innerText =" ";
+                },1000)
+                if(sephiroth.health < 0){
+                    sephiroth.health = 0
+                }
+            }
+            else if(target.health < 0){
                 target.health = 0
             }
             
-        } else{
-            console.log(`${this.name} doesn't have enough mana points!`)
-        }
-        magicSFX.play();
     } 
     
 } 
@@ -100,15 +122,19 @@ const checkTurn = ()=>{
         console.log(`It's Tifa's Turn`)
     } else if(currentTurn === 1 && tifa.health === 0){
         currentTurn = 2;
-        console.log(`It's Sephiroth's Turn`)
+        console.log(`Tifa cannot make a turn`)
     } if(currentTurn === 2 && cloud.health === 0 && tifa.health === 0){
-        alert('YOU LOSE')
+        $status[0].innerText = "GAME OVER!!!";
+        $status.addClass('lose')
         battleMusic.pause();
         gameOver.play();
     } else if(currentTurn === 0 && sephiroth.health === 0 || currentTurn === 1 && sephiroth.health === 0 || currentTurn === 2 && sephiroth.health === 0){
-        alert(`YOU WIN!`)
+        $status[0].innerText = "Victory!!!!";
+        $status.addClass('win')
         battleMusic.pause();
         victory.play();
+        $cloudMenu.addClass('hidden')
+        $tifaMenu.addClass('hidden')
     } else if(currentTurn === 2 && sephiroth.health > 0){
         $tifaMenu.addClass('hidden')
         console.log(`It's Sephiroth's Turn`)
@@ -188,8 +214,6 @@ const sephirothBlast2 = ()=>{
     let $cloudMagic = $('.cloud-magic'); // Clouds Magic Attack Button
     
     let $cloudMenu = $('.cloud-menu') //Clouds Menu
-    
-    let $cloudHitbox = $('li.cloud.hit-box')
     
     let $cloudHP = $('li.cloud-hp') 
     
