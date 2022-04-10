@@ -73,7 +73,7 @@ class Heroes{
          }   
 
         } 
-        heal.play();
+        magicSFX.play();
         this.manapotions-- 
         console.log(`${target.name} recovered mana points!`)
         tifasStatus();
@@ -221,6 +221,10 @@ const sephirothBlast2 = ()=>{
 
     let $cloudHeal = $('button.cloud-items')
 
+    let $cloudCharge =$('.cloud-menu li button.charge')
+
+    console.log($cloudCharge)
+
    
 
    
@@ -259,6 +263,8 @@ let $tifaMenu = $('.tifa-menu') //Tifas Battle Menu
 let $tifasHP = $('li.tifas-hp') //Tifas HP
 
 let $tifasMP = $('li.tifas-mp') //Tifas MP
+
+let $tifaCharge = $('.tifa-menu li button.charge')
 
 
 
@@ -305,7 +311,18 @@ const cloudHeal = (target) =>{
         cloudIdle()
     }, 1000);
     cloudStatus();
-    tifasStatus();
+    currentTurn++
+    checkTurn();
+}
+
+
+const cloudCharge =(cloud)=>{
+    cloud.bluePotion(cloud);
+    $cloud.attr('src', './images/Cloud/cloud-charge.gif')
+    setTimeout(function(){
+        cloudIdle()
+    }, 2000);
+    cloudStatus();
     currentTurn++
     checkTurn();
 }
@@ -374,6 +391,11 @@ $cloudHeal.click(()=>{
     console.log("No more potions!")
 })
 
+$cloudCharge.click(()=>{
+    if(cloud.manapotions > 0){
+        cloudCharge(cloud)
+    }
+})
 
 
 
@@ -403,16 +425,30 @@ const tifaMagicAttack = ()=>{
 }
 ////
 const tifaHeal =() =>{
-    tifa.redPotion(target);
+    tifa.redPotion(tifa);
     setTimeout(function(){
         tifaIdle()
     }, 1500);
     tifasStatus();
-    cloudStatus();
     currentTurn++
     checkTurn();
 }
 ////
+
+
+const tifaCharge =() =>{
+    tifa.bluePotion(tifa);
+    $tifa.attr('src', './images/Tifa/tifa-charge.gif')
+    setTimeout(function(){
+        tifaIdle()
+    }, 2000);
+    tifasStatus();
+    currentTurn++
+    checkTurn();
+}
+
+
+
 const tifaIdle = () =>{
     $tifa.attr('src', './images/Tifa/tifa-idle.gif')
 }
@@ -447,9 +483,23 @@ $tifaMagic.click(()=>{
 
 
 
-$tifaItems[0].click(()=>{
+$tifaItems.click(()=>{
+    if(tifa.potions>0){
+        tifaHeal(tifa);
+    } else{
+        console.log("Can't heal")
+    }
    
 })
+
+$tifaCharge.click(()=>{
+    if(tifa.manapotions>0){
+        tifaCharge(tifa);
+    }else{
+        console.log("Can't charge")
+    }
+})
+
 
 
 //Sephiroth Variables
