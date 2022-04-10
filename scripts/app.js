@@ -1,10 +1,15 @@
+
+
 //Current Turn
 let currentTurn = 0;
 let $status = $('.gamestatus')
 let $hitbox = $('.sephiroth-hitbox')
 
 
-
+const victoryPose = ()=>{
+    $cloud.attr('src', './images/Cloud/cloud-win.gif');
+    $tifa.attr('src', './images/Tifa/tifa-win.gif');
+}
 
 
 //Intro Audio
@@ -15,7 +20,7 @@ const victory = new Audio('./music/victory.mp3')
 
 // Hero and Villain Class
 class Heroes{
-    constructor(name,health,maxHealth,mana,maxMana,minStr,maxStr,minMag,maxMag,potions,manapotions){
+    constructor(name,health,maxHealth,mana,maxMana,minStr,maxStr,minMag,maxMag,heals,charges){
         this.name = name;
         this.health = health;
         this.maxHealth = maxHealth
@@ -25,10 +30,11 @@ class Heroes{
         this.maxStr = maxStr;
         this.minMag = minMag;
         this.maxMag = maxMag;
-        this.potions = potions;
-        this.manapotions = manapotions
+        this.heals = heals;
+        this.charges = charges;
     }
      attack(target) {
+         
         let damage = Math.floor(Math.random()*(this.maxStr-this.minStr + 1)+this.minStr);
         target.health -= damage
         hit.play();
@@ -48,9 +54,9 @@ class Heroes{
     }
 
     
-     redPotion(target){
+     healing(target){
               
-             if(target.health > 0 && this.potions > 0 && target.health < target.maxHealth ){
+             if(target.health > 0 && this.heals > 0 && target.health < target.maxHealth ){
                  target.health += 100
                  if(target.health >= target.maxHealth){
                      target.health =  target.maxHealth
@@ -61,12 +67,12 @@ class Heroes{
                  cloudStatus();
                  
              } 
-          this.potions--
+          this.heals--
         //  console.log("No more potions!")
 
     } 
-    bluePotion(target){
-        if(this.manapotions > 0 && target.mana < target.maxMana ){
+    charging(target){
+        if(this.charges > 0 && target.mana < target.maxMana ){
             target.mana += 50
          if(target.mana > target.maxMana){
              target.mana = target.maxMana
@@ -74,7 +80,7 @@ class Heroes{
 
         } 
         magicSFX.play();
-        this.manapotions-- 
+        this.charges-- 
         console.log(`${target.name} recovered mana points!`)
         tifasStatus();
         cloudStatus();
@@ -102,6 +108,7 @@ class Heroes{
             }
             
     } 
+   
     
 } 
 
@@ -112,17 +119,17 @@ class Heroes{
 const checkTurn = ()=>{
     if(currentTurn === 0 && cloud.health > 0){
         $cloudMenu.removeClass('hidden')
-        console.log('It`s Cloud`s Turn')
+        $status[0].innerText =  `It's Cloud's turn!`
     }else if(cloud.health === 0 && currentTurn === 0){
         currentTurn = 1;
-        console.log(`Cloud cannot make a turn`)
+        $status[0].innerText =  `It's Tifa's turn!`
     } if(currentTurn === 1 && tifa.health > 0){
         $tifaMenu.removeClass('hidden')
         $cloudMenu.addClass('hidden')
-        console.log(`It's Tifa's Turn`)
+        $status[0].innerText =  `It's Tifas's turn!`
     } else if(currentTurn === 1 && tifa.health === 0){
         currentTurn = 2;
-        console.log(`Tifa cannot make a turn`)
+        $status[0].innerText =  `It's Sephiroth's turn!`
     } if(currentTurn === 2 && cloud.health === 0 && tifa.health === 0){
         $status[0].innerText = "GAME OVER!!!";
         $status.addClass('lose')
@@ -133,11 +140,15 @@ const checkTurn = ()=>{
         $status.addClass('win')
         battleMusic.pause();
         victory.play();
+        setInterval(()=>{
+            
+            victoryPose();
+        }, 2000);
         $cloudMenu.addClass('hidden')
         $tifaMenu.addClass('hidden')
     } else if(currentTurn === 2 && sephiroth.health > 0){
         $tifaMenu.addClass('hidden')
-        console.log(`It's Sephiroth's Turn`)
+        $status[0].innerText =  `It's Sephiroth's turn!`
         setTimeout(() => {
             sephirothsMove();
         }, 1500);
@@ -149,9 +160,9 @@ const checkTurn = ()=>{
 
 const sephiroth = new Heroes('Sephiroth',2000,2000,4000,4000,10,50,30,70,15,);
 
-const cloud = new Heroes('Cloud', 200, 200, 100, 100, 50,90,60,220,5,5);
+const cloud = new Heroes('Cloud', 200, 200, 100, 100, 50,90,60,220,3,99);
 
-const tifa = new Heroes('Tifa', 150, 150,200,200,25,60,180,300,5,5);
+const tifa = new Heroes('Tifa', 150, 150,200,200,25,60,180,300,3,99);
 
 // END OF CLASS OBJECT
 
@@ -305,7 +316,7 @@ const cloudAttack =() =>{
 }
 /////
 const cloudHeal = (target) =>{
-    cloud.redPotion(target);
+    cloud.healing(target);
     $cloud.attr('src', './images/Cloud/cloud-idle.gif')
     setTimeout(function(){
         cloudIdle()
@@ -317,7 +328,7 @@ const cloudHeal = (target) =>{
 
 
 const cloudCharge =(cloud)=>{
-    cloud.bluePotion(cloud);
+    cloud.charging(cloud);
     $cloud.attr('src', './images/Cloud/cloud-charge.gif')
     setTimeout(function(){
         cloudIdle()
@@ -383,7 +394,7 @@ $cloudMagic.click(()=>{
 
 
 $cloudHeal.click(()=>{
-    if(cloud.potions > 0){
+    if(cloud.heals > 0){
 
         cloudHeal(cloud)
 
@@ -392,7 +403,7 @@ $cloudHeal.click(()=>{
 })
 
 $cloudCharge.click(()=>{
-    if(cloud.manapotions > 0){
+    if(cloud.charges > 0){
         cloudCharge(cloud)
     }
 })
@@ -425,7 +436,7 @@ const tifaMagicAttack = ()=>{
 }
 ////
 const tifaHeal =() =>{
-    tifa.redPotion(tifa);
+    tifa.healing(tifa);
     setTimeout(function(){
         tifaIdle()
     }, 1500);
@@ -437,7 +448,7 @@ const tifaHeal =() =>{
 
 
 const tifaCharge =() =>{
-    tifa.bluePotion(tifa);
+    tifa.charging(tifa);
     $tifa.attr('src', './images/Tifa/tifa-charge.gif')
     setTimeout(function(){
         tifaIdle()
@@ -484,7 +495,7 @@ $tifaMagic.click(()=>{
 
 
 $tifaItems.click(()=>{
-    if(tifa.potions>0){
+    if(tifa.heals>0){
         tifaHeal(tifa);
     } else{
         console.log("Can't heal")
@@ -493,7 +504,7 @@ $tifaItems.click(()=>{
 })
 
 $tifaCharge.click(()=>{
-    if(tifa.manapotions>0){
+    if(tifa.charges>0){
         tifaCharge(tifa);
     }else{
         console.log("Can't charge")
@@ -589,7 +600,7 @@ const sephirothsMove =()=>{
     } else if (randomNumber===1){
         sephirothMagicAttack();
     }else if (randomNumber===2){
-        sephiroth.redPotion(sephiroth)
+        sephiroth.healing(sephiroth)
         $sephiroth.attr('src', './images/Sephiroth/sephiroth-item.gif')
         setTimeout(function(){
             sephirothIdle()
@@ -615,7 +626,31 @@ const sephirothsMove =()=>{
 
 
 
+// Get the modal
+let modal = document.getElementById("myModal");
 
+
+// Get the <span> element that closes the modal
+let span = document.getElementsByClassName("close")[0];
+
+
+$(window).on("load",()=>{
+    modal.style.display="block";
+})
+
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+    battleMusic.play();
+  }
+}
 
 
 
