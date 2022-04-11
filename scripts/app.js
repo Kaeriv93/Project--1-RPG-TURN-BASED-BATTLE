@@ -4,6 +4,8 @@
 let currentTurn = 0;
 let $status = $('.gamestatus')
 let $hitbox = $('.sephiroth-hitbox')
+let $battlelog =$('p.battlelog')
+$battlelog[0].innerText="Action"
 
 
 const victoryPose = ()=>{
@@ -51,6 +53,7 @@ class Heroes{
             target.health = 0
         }
         console.log(`${target.name} receieved ${damage} amount of damage!`)
+        $battlelog[0].innerText= `${target.name} receieved ${damage} amount of damage!`
     }
 
     
@@ -62,6 +65,7 @@ class Heroes{
                      target.health =  target.maxHealth
                  }
                  console.log(`${target.name} recovered health points! `)
+                 $battlelog[0].innerText= `${target.name} recovered health points! `
                  heal.play();
                  tifasStatus();
                  cloudStatus();
@@ -82,6 +86,7 @@ class Heroes{
         magicSFX.play();
         this.charges-- 
         console.log(`${target.name} recovered mana points!`)
+        $battlelog[0].innerText= `${target.name} recovered mana points!`
         tifasStatus();
         cloudStatus();
     }  
@@ -90,6 +95,7 @@ class Heroes{
             let magicalDamage = Math.floor(Math.random()*(this.maxMag-this.minMag + 1)+this.minMag);
             target.health -= magicalDamage
             console.log(`${target.name} received ${magicalDamage} amount of magic damage!`)
+            $battlelog[0].innerText= `${target.name} received ${magicalDamage} amount of magic damage!`
             magicSFX.play();
             this.mana -= 70
             
@@ -544,6 +550,7 @@ const sephirothAttacksAll = ()=>{
         sephirothIdle()
     }, 1500);
     $sephirothMenu.addClass('hidden')
+  
     
     
     
@@ -642,6 +649,7 @@ $(window).on("load",()=>{
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
+  battleMusic.play();
 }
 
 // When the user clicks anywhere outside of the modal, close it

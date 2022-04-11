@@ -124,6 +124,10 @@ float: left;
  padding: 15px 100px;
 }
 
+.battlelog{
+  text-align: left;
+}
+
 
 /* Styling Lists, Menus and Buttons*/
 
@@ -181,10 +185,6 @@ button:hover{
 }
 
 
-/* Potions */
-.healing{
-  display: none;
-}
 
 
 /* MODAL TEST */
@@ -210,6 +210,7 @@ button:hover{
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    color: black;
   }
   
   /* The Close Button */
