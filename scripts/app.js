@@ -72,7 +72,7 @@ class Heroes{
                  
              } 
           this.heals--
-        //  console.log("No more potions!")
+
 
     } 
     charging(target){
@@ -292,7 +292,7 @@ const tifasStatus= ()=>{
 $tifasHP[0].innerText = `HP:${tifa.health}/150`
 $tifasMP[0].innerText = `MP:${tifa.mana}/200`
 }
-////////////////////////////////////////////////////
+
 
 
 
@@ -320,7 +320,7 @@ const cloudAttack =() =>{
 
     
 }
-/////
+
 const cloudHeal = (target) =>{
     cloud.healing(target);
     $cloud.attr('src', './images/Cloud/cloud-idle.gif')
@@ -343,7 +343,7 @@ const cloudCharge =(cloud)=>{
     currentTurn++
     checkTurn();
 }
-//////
+
 const cloudMagic = () =>{
     cloud.magicAttack(sephiroth);
     $cloud.attr('src', './images/Cloud/cloud-magic.gif')
@@ -386,7 +386,7 @@ $cloudAttack.click(()=>{
     cloudAttack();
     checkSephiroth();   
 })
-/////
+
 
 $cloudMagic.click(()=>{
     if(cloud.mana>=70){
@@ -428,7 +428,7 @@ const tifaAttack = () =>{
     checkTurn();
     
 }
-////
+
 const tifaMagicAttack = ()=>{
     tifa.magicAttack(sephiroth);
     $tifa.attr('src', './images/Tifa/tifa-magic.gif')
@@ -440,7 +440,7 @@ const tifaMagicAttack = ()=>{
     currentTurn++
     checkTurn();
 }
-////
+
 const tifaHeal =() =>{
     tifa.healing(tifa);
     setTimeout(function(){
@@ -450,7 +450,7 @@ const tifaHeal =() =>{
     currentTurn++
     checkTurn();
 }
-////
+
 
 
 const tifaCharge =() =>{
@@ -484,7 +484,7 @@ $tifaAttack.click(()=>{
     tifaAttack();
     checkSephiroth();
 })
-/////
+
 $tifaMagic.click(()=>{
 
     if(tifa.mana>=70){
@@ -496,7 +496,7 @@ $tifaMagic.click(()=>{
    
     checkSephiroth();
 })
-////
+
 
 
 
@@ -557,7 +557,7 @@ const sephirothAttacksAll = ()=>{
     
 }
 
-/////
+
 const sephirothMagicAttack = () =>{
     let randomNumber = Math.floor(Math.random()*2);
     if(randomNumber===0 && cloud.health > 0){
@@ -587,11 +587,11 @@ const sephirothMagicAttack = () =>{
     
     
 }
-//////
+
 const sephirothIdle = () =>{
     $sephiroth.attr('src', './images/Sephiroth/sephiroth-idle.gif')
 }
-/////
+
 const checkSephiroth = ()=>{
     if(sephiroth.health === 0){
         $sephiroth.attr('src', './images/Sephiroth/sephiroth-dead.gif')

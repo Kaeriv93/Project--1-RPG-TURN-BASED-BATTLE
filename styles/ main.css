@@ -12,7 +12,7 @@ body{
     background-image: url('/battleBackgrounds/castle.png');
     background-size: cover;
     background-repeat: no-repeat;
-    position: relative;
+    /* position: relative; */
 
    
     
@@ -22,13 +22,6 @@ body{
 }
 
 .battleground{
-  /* background-color:#808080;
-  background-color: rgb(0,123,167);
-  background-image: url('/battleBackgrounds/castle.png');
-  background-size: cover;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  position: relative; */
   padding-top: 40vh;
 
 
@@ -49,53 +42,70 @@ body{
 
 /* Hero and Villain Placements */
 
-/* .cloud{
+
+
+.cloud{
   position: absolute;
+  top:35vh;
+}
+
+.cloud-menu{
+  position: absolute;
+  top: 38vh;
   z-index: 1;
+  left:13vh;
+}
 
-} */
+.tifa{
+  position: absolute;
+  top: 55vh;
+  
+}
 
-
-
-.hero{
-  position: relative;
-  justify-content: center;
-  display: flex;
+.tifa-menu{
+  position: absolute;
+  top:55vh;
+  left:14vh;
   z-index: 1;
-
 }
 
 /* This will show animations attacking Sephiroth */
 .skills{
-  position: relative;
+  position: absolute;
   z-index: 1;
-  left: 38vh;
-  bottom: 25vh;
+  left: 43vh;
+  bottom: 26vh;
 }
 
 .sephiroth{
-position: relative;
-left: 20vh;
-bottom: 25vh;
-padding: 0;
+position: absolute;
+top: 40vh;
+right: 10vh;
 
 }
 .sephiroth-hitbox{
   text-align: center;
-  position: relative;
+  position: absolute;
   z-index: 1;
-  padding-left: 28vh;
-  bottom: 28vh;
+  top:36vh;
+  right:24vh;
 }
 
 
 
 /* This will show magic hitting our characters */
-.blast1, .blast2{
-  position: relative;
-  z-index: 1;
-  top: 30vh;
-  right: 5vh;
+.blast1{
+  position: absolute;
+  top:8vh;
+  left: -10vh;
+  z-index: 2;
+}
+
+.blast2{
+  position: absolute;
+  top: 25vh;
+  left:-10vh;
+  z-index: 2;
 }
 
 
@@ -105,7 +115,7 @@ padding: 0;
   float:left;
   flex-wrap: wrap;
   position: relative;
-
+  padding-top: 300px;
 }
 
 .character-profiles li{
@@ -135,6 +145,7 @@ float: left;
 
 .battlelog{
   text-align: left;
+  padding-top: 300px;
 }
 
 
@@ -241,7 +252,7 @@ button:hover{
 
 
 
-  @media(min-width:3000px){
+  @media(min-width:2401px)and (max-width:3600px){
    .cloud{
      position: absolute;
      top:900px;
@@ -261,7 +272,7 @@ button:hover{
     .sephiroth-hitbox{
       position: absolute;
       top:70vh;
-      left: 97vh;
+      left: 24vh;
     }
     .cloud-menu{
       position: absolute;
@@ -276,12 +287,12 @@ button:hover{
     }
 
     .character-profiles{
-      top:75vh;
+      top:30vh;
     }
 
     .battlelog{
       position: relative;
-      top:75vh;
+      top:30vh;
     }
 
     .skills{
@@ -309,7 +320,7 @@ button:hover{
   }
 
 
-  @media(min-width:1200px) and (max-width:2999px){
+  @media(min-width:1300px) and (max-width:2400px){
     .cloud{
       position: absolute;
       top:700px;
