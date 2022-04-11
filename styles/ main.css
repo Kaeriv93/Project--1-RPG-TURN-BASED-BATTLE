@@ -64,15 +64,6 @@ body{
   z-index: 1;
 
 }
-/* .cloud{
-  top: 35vh;
-}
-
-.cloud-menu{
-  position: absolute;
-  top:38vh;
-  left: 15vh;
-} */
 
 /* This will show animations attacking Sephiroth */
 .skills{
@@ -266,6 +257,12 @@ button:hover{
      top:75vh;
      left: 120vh;
     }
+
+    .sephiroth-hitbox{
+      position: absolute;
+      top:70vh;
+      left: 97vh;
+    }
     .cloud-menu{
       position: absolute;
       top:920px;
@@ -298,15 +295,84 @@ button:hover{
     .blast1{
       position: absolute;
       z-index: 2;
-      top:800px;
-      left: -2vh;
+      top:525px;
+      left: -12vh;
     }
 
     .blast2{
       position: absolute;
-      top:1100px;
-      left: -3vh;
+      top:820px;
+      left: -12vh;
       z-index: 2;
     }
    
   }
+
+
+  @media(min-width:1200px) and (max-width:2999px){
+    .cloud{
+      position: absolute;
+      top:700px;
+    }
+ 
+    .tifa{
+      position: absolute;
+      top: 1000px;
+    }
+ 
+     .sephiroth{
+      position: absolute;
+      top:65vh;
+      left: 100vh;
+     }
+
+     .sephiroth-hitbox{
+      position: absolute;
+      top:60vh;
+      left: 77vh;
+    }
+
+     .cloud-menu{
+       position: absolute;
+       top:720px;
+       left: 12vh;
+       
+     }
+     .tifa-menu{
+       position: absolute;
+       top:1020px;
+       left: 8vh;
+     }
+ 
+     .character-profiles{
+       top:75vh;
+     }
+ 
+     .battlelog{
+       position: relative;
+       top:75vh;
+     }
+ 
+     .skills{
+      position: absolute;
+      top:58vh;
+      left: 98vh;
+ 
+     
+     }
+ 
+     .blast1{
+       position: absolute;
+       z-index: 2;
+       top:350px;
+       left: -12vh;
+     }
+ 
+     .blast2{
+       position: absolute;
+       top:625px;
+       left: -12vh;
+       z-index: 2;
+     }
+    
+   }

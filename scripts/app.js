@@ -641,9 +641,9 @@ let modal = document.getElementById("myModal");
 let span = document.getElementsByClassName("close")[0];
 
 
-// $(window).on("load",()=>{
-//     modal.style.display="block";
-// })
+$(window).on("load",()=>{
+    modal.style.display="block";
+})
 
 
 // When the user clicks on <span> (x), close the modal
