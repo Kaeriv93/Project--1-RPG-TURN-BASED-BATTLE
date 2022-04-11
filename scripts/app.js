@@ -158,11 +158,11 @@ const checkTurn = ()=>{
 
 // Heroes and Villains
 
-const sephiroth = new Heroes('Sephiroth',2000,2000,4000,4000,10,50,30,70,15,);
+const sephiroth = new Heroes('Sephiroth',2000,2000,4000,4000,10,50,30,70,15);
 
-const cloud = new Heroes('Cloud', 200, 200, 100, 100, 50,90,60,220,3,99);
+const cloud = new Heroes('Cloud', 200, 200, 100, 100, 50,90,130,220,3,99);
 
-const tifa = new Heroes('Tifa', 150, 150,200,200,25,60,180,300,3,99);
+const tifa = new Heroes('Tifa', 150, 150,200,200,25,60,180,280,3,99);
 
 // END OF CLASS OBJECT
 

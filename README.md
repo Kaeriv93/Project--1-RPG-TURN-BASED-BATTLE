@@ -3,23 +3,23 @@ Here we will be creating a RPG styled turned based battle system.
 
 
 User Stories
-1. The game will open up with a modal showing some dialogue between the characters
+1. The game will open up with modal displaying the instructions of the game.
 2. After the dialogue has been run, the game will initiate and the music will que.
 3. In here you will have control of your 2 heroes that are aiming to defeat the boss.
 4. Making turns will alternate between your characters as well as the boss.
 5. Be careful as you can only make 1 move per character, for example if you decided to attack
-you will not be able to heal or block.
+you will not be able to heal or charge.
 6. A menu item will only be visible ONCE it is that characters turn
-7. The menu will consist of an ATTACK -(Attack the enemy) Block -(reduce damage) Magic-(A powerful skill that uses Mana points) -Items(this will hide the rest of the menu and display which items you can use! Careful though, if you don't have any items then you WILL NOT be able to use it.)
-8. The bottom of the screen will display your character's HP (health points if it reachs 0 they will be inactive) and your character's MP (Mana points needed to use a skill, otherwise cannot be activated).
+7. The menu will consist of an ATTACK -(Attack the enemy) Magic-(A powerful skill that uses Mana points) -Heal(your character will heal themselves, but you are limited to three uses) Charge- (A great way to restore your mana points)
+8. The bottom of the screen will display your character's HP (health points if it reachs 0 they will be inactive) and your character's MP (Mana points needed to use your magic attack , otherwise cannot be activated).
 9. You will successfully complete the game if you are able to beat the boss OR lose if he defeats you.
-10. A damage counter will be displayed above or next to each player, if they are attacked.
+10. A damage counter will be displayed to indicate how much damage has been done to the boss. (He has 2000HP!!!) 
 11. At the bottom will display the action that has occured.
 12. Enjoy and have fun!
 
 MVP GOALS
-1. As a user I will be introduce to an open screen that will display some dialogue.
-2. After reading the dialogue I will click out and the game will commence.
+1. As a user I will be introduce to an open screen that will display instructions.
+2. After reading the instructions I will click out and the game will commence.
 3. I want our heroes to start first and be able to make a move before the boss does.
 4. I want our action buttons to only appear when it is our turn.
 6. I want our characters to be display close to one another and have the boss on the other side.
@@ -51,3 +51,5 @@ It's still day 2, but we finally finished class hours. I'm going to take a short
 3. Day 3, finally settled on a background image that I really like. Keeping the character models relative so that they can always be placed in the same position no matter screen resolution. Going to work on the responsiveness of the site as well. We do have the chars health and mp being displayed at the bottom and they are responsive as well. We will not show the bosses HP or MP, but we are able to have him make a random move when it is his turn. Goals today are to implement the potions, work on the modal, and use more animations and soundfx. Going to also refact some code and make it look pretty. 
 
 4. Day 5, took off Day 4 to rest and recharge. Today we got the modal to automatically open on load displaying the instructions. Will go ahead and make edits. The game is fully functional now. Will now spend the rest of the time working on css going to be a LOOOONG ride. Will also include various media queries so the game becomes responsive. Earlier we had everything set to position relative, but whenever we are switching different animations(via gifs) everything seems to move out of place a bit so yeah will go ahead and fix that then.
+
+5. Day 6, back to it! Didn't change too much on Day 5, but we will going ahead and develop a new branch to have a play around with the css, so that we won't mess with our original code. Will also be tweaking with more css with the layouts and placements of our characters
