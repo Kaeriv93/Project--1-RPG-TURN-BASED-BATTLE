@@ -5,7 +5,7 @@ let currentTurn = 0;
 let $status = $('.gamestatus')
 let $hitbox = $('.sephiroth-hitbox')
 let $battlelog =$('p.battlelog')
-$battlelog[0].innerText="Action"
+
 
 
 const victoryPose = ()=>{
@@ -36,7 +36,7 @@ class Heroes{
         this.charges = charges;
     }
      attack(target) {
-         
+        // let luckyChance = Math.floor(Math.random()*10) 
         let damage = Math.floor(Math.random()*(this.maxStr-this.minStr + 1)+this.minStr);
         target.health -= damage
         hit.play();
@@ -641,9 +641,9 @@ let modal = document.getElementById("myModal");
 let span = document.getElementsByClassName("close")[0];
 
 
-$(window).on("load",()=>{
-    modal.style.display="block";
-})
+// $(window).on("load",()=>{
+//     modal.style.display="block";
+// })
 
 
 // When the user clicks on <span> (x), close the modal
