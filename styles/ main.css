@@ -9,6 +9,12 @@ body{
     font-size: 20px;
     margin: 0 auto;
     padding: 0 auto;
+    background-image: url('/battleBackgrounds/castle.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+
+   
     
                                                 
   
@@ -16,14 +22,14 @@ body{
 }
 
 .battleground{
-  /* background-color:#808080; */
+  /* background-color:#808080;
   background-color: rgb(0,123,167);
   background-image: url('/battleBackgrounds/castle.png');
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
-  position: relative;
-
+  position: relative; */
+  padding-top: 40vh;
 
 
 
@@ -37,24 +43,26 @@ body{
 /* END OF BACKGROUND  */
 
 
-/* .cloud{
-  background-image: url('/images/Cloud/cloud-idle.gif');
- background-repeat: no-repeat;
-  z-index: 1;
-} */
+
 
 
 
 /* Hero and Villain Placements */
 
+/* .cloud{
+  position: absolute;
+  z-index: 1;
+
+} */
+
+
+
 .hero{
   position: relative;
   justify-content: center;
   display: flex;
-  padding-top: 16vh;
+  z-index: 1;
 
-
- 
 }
 
 /* This will show animations attacking Sephiroth */
@@ -96,6 +104,7 @@ padding: 0;
 .character-profiles{
   float:left;
   flex-wrap: wrap;
+  position: relative;
 
 }
 
@@ -122,6 +131,10 @@ position: absolute;
 .pic{
 float: left;
  padding: 15px 100px;
+}
+
+.battlelog{
+  text-align: left;
 }
 
 
@@ -181,10 +194,6 @@ button:hover{
 }
 
 
-/* Potions */
-.healing{
-  display: none;
-}
 
 
 /* MODAL TEST */
@@ -203,6 +212,7 @@ button:hover{
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
   
+  
   /* Modal Content */
   .modal-content {
     background-color: #fefefe;
@@ -210,6 +220,7 @@ button:hover{
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    color: black;
   }
   
   /* The Close Button */
@@ -226,3 +237,142 @@ button:hover{
     text-decoration: none;
     cursor: pointer;
   }
+
+
+
+
+  @media(min-width:3000px){
+   .cloud{
+     position: absolute;
+     top:900px;
+   }
+
+   .tifa{
+     position: absolute;
+     top: 1200px;
+   }
+
+    .sephiroth{
+     position: absolute;
+     top:75vh;
+     left: 120vh;
+    }
+
+    .sephiroth-hitbox{
+      position: absolute;
+      top:70vh;
+      left: 97vh;
+    }
+    .cloud-menu{
+      position: absolute;
+      top:920px;
+      left: 12vh;
+      
+    }
+    .tifa-menu{
+      position: absolute;
+      top:1220px;
+      left: 8vh;
+    }
+
+    .character-profiles{
+      top:75vh;
+    }
+
+    .battlelog{
+      position: relative;
+      top:75vh;
+    }
+
+    .skills{
+     position: absolute;
+     top:70vh;
+     left: 118vh;
+
+    
+    }
+
+    .blast1{
+      position: absolute;
+      z-index: 2;
+      top:525px;
+      left: -12vh;
+    }
+
+    .blast2{
+      position: absolute;
+      top:820px;
+      left: -12vh;
+      z-index: 2;
+    }
+   
+  }
+
+
+  @media(min-width:1200px) and (max-width:2999px){
+    .cloud{
+      position: absolute;
+      top:700px;
+    }
+ 
+    .tifa{
+      position: absolute;
+      top: 1000px;
+    }
+ 
+     .sephiroth{
+      position: absolute;
+      top:65vh;
+      left: 100vh;
+     }
+
+     .sephiroth-hitbox{
+      position: absolute;
+      top:60vh;
+      left: 77vh;
+    }
+
+     .cloud-menu{
+       position: absolute;
+       top:720px;
+       left: 12vh;
+       
+     }
+     .tifa-menu{
+       position: absolute;
+       top:1020px;
+       left: 8vh;
+     }
+ 
+     .character-profiles{
+       top:75vh;
+     }
+ 
+     .battlelog{
+       position: relative;
+       top:75vh;
+     }
+ 
+     .skills{
+      position: absolute;
+      top:58vh;
+      left: 98vh;
+ 
+     
+     }
+ 
+     .blast1{
+       position: absolute;
+       z-index: 2;
+       top:350px;
+       left: -12vh;
+     }
+ 
+     .blast2{
+       position: absolute;
+       top:625px;
+       left: -12vh;
+       z-index: 2;
+     }
+    
+   }
