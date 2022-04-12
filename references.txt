@@ -1,7 +1,7 @@
 1. This is the site I used to grab my sprites and turn them into gifs for animations.
 https://www.spriters-resource.com/
 
-2. This is where I made some custom gifs, I also found some online(google) and used the ones from the earlier link as well.
+2. This is where I made some custom gifs, I also found most online(google) and used the ones from the earlier link as well.
 So some gifs that I wanted to edit I would go into this link and literally splice up the gif into individual frames.
 From there I would make the delay in between pics faster or slower. And honestly sometimes it would break or make the character look sloppy.
 I really want to implement a lot of animations later on, but only time can tell and I will focus on my functionality as well.
@@ -12,6 +12,6 @@ https://ezgif.com/maker
 3. The youtube I learned how to make gifs from
 https://www.youtube.com/watch?v=JjQ82AXe7II&ab_channel=MrPaulMARRIOTT%28LTPSS%292014-21
 
-4. stackoverflow
+4. Stackoverflow
    MDN
-   general assembly notes
+   General assembly notes and my peers

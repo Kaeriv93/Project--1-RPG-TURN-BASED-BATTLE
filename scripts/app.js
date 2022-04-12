@@ -359,6 +359,7 @@ const cloudHeal = (target) =>{
     setTimeout(function(){
         cloudIdle()
     }, 1000);
+    checkCloud();
     cloudStatus();
     currentTurn++
     checkTurn();
@@ -398,6 +399,13 @@ const cloudIdle = ()=>{
 
 
 const checkCloud = ()=>{
+    if(cloud.health <= 50){
+       $cloudHP.css("color","red") 
+    }
+    
+    if(cloud.health > 50){
+        $cloudHP.css("color","white")
+    }
     if(cloud.health === 0){
         $cloud.attr('src', './images/Cloud/cloud-dead.gif')
         $cloudMenu.addClass('hidden')
@@ -481,6 +489,7 @@ const tifaHeal =() =>{
     setTimeout(function(){
         tifaIdle()
     }, 1500);
+    checkTifa();
     tifasStatus();
     currentTurn++
     checkTurn();
@@ -506,6 +515,14 @@ const tifaIdle = () =>{
 }
 ////
 const checkTifa =() =>{
+    if(tifa.health <= 50){
+        $tifasHP.css("color","red") 
+     }
+     
+     if(tifa.health > 50){
+         $tifasHP.css("color","white")
+     }
+
     if(tifa.health === 0){
         $tifa.attr('src', './images/Tifa/tifa-dead.gif')
         $tifaMenu.addClass('hidden')
