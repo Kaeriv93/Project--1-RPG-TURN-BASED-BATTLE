@@ -7,7 +7,8 @@ Creating a turn based battle system based off Final Fantasy 7. The player will t
 Used: HTML, Javascript, jQuery, CSS
 
 Getting Started:
-<---link to game here---->
+https://kaeriv93.github.io/Project--1-RPG-TURN-BASED-BATTLE/
+
 I really wanted to grasp the feel of Final Fantasy 7, so I wanted to be able to implement magic, soundfx, and moving characters. These characters are actually given the illusion of being animated because all the files are actually gifs. I was able to find a good deal of them online, those that weren't possible to find, I had to create them using sprite resource sheets. Hopefully as I develop my skills, the gifs will look sharper and professional. 
 The game is a fair bit loud so I do recommend lower your volume.
 
