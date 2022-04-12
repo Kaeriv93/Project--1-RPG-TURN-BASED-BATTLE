@@ -7,6 +7,19 @@ let $hitbox = $('.sephiroth-hitbox')
 let $battlelog =$('p.battlelog')
 
 
+const getHit = ()=>{
+        $sephiroth.fadeOut(200);
+        $sephiroth.fadeIn(200);
+}
+
+const hurt =()=>{
+    $cloud.fadeOut(200);
+    $cloud.fadeIn(200);
+    $tifa.fadeOut(200);
+    $tifa.fadeIn(200);
+
+}
+
 
 const victoryPose = ()=>{
     $cloud.attr('src', './images/Cloud/cloud-win.gif');
@@ -322,8 +335,8 @@ const cloudAttack =() =>{
     setTimeout(function(){
         cloudIdle()
     }, 1500);
+    getHit();
     currentTurn++
-    
     checkTurn();
 
     
@@ -434,6 +447,7 @@ const tifaAttack = () =>{
     setTimeout(function(){
         tifaIdle()
     }, 1500);
+    getHit();
     currentTurn++
     checkTurn();
     
@@ -551,6 +565,7 @@ let $sephirothMenu = $('.sephiroth-menu')
 const sephirothAttacksAll = ()=>{
     sephiroth.attack(tifa)
     sephiroth.attack(cloud)
+    hurt();
     $sephiroth.attr('src', './images/Sephiroth/sephiroth-attack.gif')
     hit.pause();
     const sephirothSFX = new Audio('./music/soundfx/slash.ogg')
