@@ -29,7 +29,10 @@ body{
 }
 
 
-
+.restart{
+  font-size: 3rem;
+  
+}
 
 
 
@@ -121,6 +124,7 @@ right: 10vh;
 .character-profiles li{
 display: inline;
 position: absolute;
+bottom: 15vh;
 
 
 }

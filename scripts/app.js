@@ -5,7 +5,29 @@ let currentTurn = 0;
 let $status = $('.gamestatus')
 let $hitbox = $('.sephiroth-hitbox')
 let $battlelog =$('p.battlelog')
+let $restart =$('.restart')
 
+
+//Reset Button
+$restart.click(()=>{
+    location.reload();
+})
+
+//Sephiroth Fadeout Animation when hit
+const getHit = ()=>{
+        $sephiroth.fadeOut(200);
+        $sephiroth.fadeIn(200);
+}
+
+
+//Heroes Fadeout Animation when hit
+const hurt =()=>{
+    $cloud.fadeOut(200);
+    $cloud.fadeIn(200);
+    $tifa.fadeOut(200);
+    $tifa.fadeIn(200);
+
+}
 
 
 const victoryPose = ()=>{
@@ -36,8 +58,16 @@ class Heroes{
         this.charges = charges;
     }
      attack(target) {
-        // let luckyChance = Math.floor(Math.random()*10) 
+        let luckyChance = Math.floor(Math.random()*10)
         let damage = Math.floor(Math.random()*(this.maxStr-this.minStr + 1)+this.minStr);
+        if(luckyChance <= 1){
+            damage = Math.floor(damage *1.5)
+            const criticalHit = new Audio('./music/soundfx/criticalHit.ogg')
+            console.log("Critical Hit!")
+            criticalHit.play();
+            hit.pause();
+            
+        } 
         target.health -= damage
         hit.play();
         if(target.name === 'Sephiroth'){
@@ -140,10 +170,12 @@ const checkTurn = ()=>{
         $status[0].innerText = "GAME OVER!!!";
         $status.addClass('lose')
         battleMusic.pause();
+        $restart.removeClass('hidden')
         gameOver.play();
     } else if(currentTurn === 0 && sephiroth.health === 0 || currentTurn === 1 && sephiroth.health === 0 || currentTurn === 2 && sephiroth.health === 0){
         $status[0].innerText = "Victory!!!!";
         $status.addClass('win')
+        $restart.removeClass('hidden')
         battleMusic.pause();
         victory.play();
         setInterval(()=>{
@@ -314,8 +346,8 @@ const cloudAttack =() =>{
     setTimeout(function(){
         cloudIdle()
     }, 1500);
+    getHit();
     currentTurn++
-    
     checkTurn();
 
     
@@ -327,6 +359,7 @@ const cloudHeal = (target) =>{
     setTimeout(function(){
         cloudIdle()
     }, 1000);
+    checkCloud();
     cloudStatus();
     currentTurn++
     checkTurn();
@@ -366,6 +399,13 @@ const cloudIdle = ()=>{
 
 
 const checkCloud = ()=>{
+    if(cloud.health <= 50){
+       $cloudHP.css("color","red") 
+    }
+    
+    if(cloud.health > 50){
+        $cloudHP.css("color","white")
+    }
     if(cloud.health === 0){
         $cloud.attr('src', './images/Cloud/cloud-dead.gif')
         $cloudMenu.addClass('hidden')
@@ -404,6 +444,8 @@ $cloudHeal.click(()=>{
 
         cloudHeal(cloud)
 
+    } if(cloud.heals === 0){
+        $cloudHeal.css("background-color", "red");
     }
     console.log("No more potions!")
 })
@@ -424,6 +466,7 @@ const tifaAttack = () =>{
     setTimeout(function(){
         tifaIdle()
     }, 1500);
+    getHit();
     currentTurn++
     checkTurn();
     
@@ -446,6 +489,7 @@ const tifaHeal =() =>{
     setTimeout(function(){
         tifaIdle()
     }, 1500);
+    checkTifa();
     tifasStatus();
     currentTurn++
     checkTurn();
@@ -471,6 +515,14 @@ const tifaIdle = () =>{
 }
 ////
 const checkTifa =() =>{
+    if(tifa.health <= 50){
+        $tifasHP.css("color","red") 
+     }
+     
+     if(tifa.health > 50){
+         $tifasHP.css("color","white")
+     }
+
     if(tifa.health === 0){
         $tifa.attr('src', './images/Tifa/tifa-dead.gif')
         $tifaMenu.addClass('hidden')
@@ -503,8 +555,11 @@ $tifaMagic.click(()=>{
 $tifaItems.click(()=>{
     if(tifa.heals>0){
         tifaHeal(tifa);
+    } 
+    if(tifa.heals === 0){
+        $tifaItems.css("background-color", "red");
     } else{
-        console.log("Can't heal")
+        console.log("No more heals")
     }
    
 })
@@ -538,6 +593,7 @@ let $sephirothMenu = $('.sephiroth-menu')
 const sephirothAttacksAll = ()=>{
     sephiroth.attack(tifa)
     sephiroth.attack(cloud)
+    hurt();
     $sephiroth.attr('src', './images/Sephiroth/sephiroth-attack.gif')
     hit.pause();
     const sephirothSFX = new Audio('./music/soundfx/slash.ogg')
