@@ -214,7 +214,7 @@ let $blast2 = $('.blast2')
 
 const cloudsFireBall = () =>{
 
-        const fireBall = new Audio('/music/soundfx/explode.ogg')
+        const fireBall = new Audio('./music/soundfx/explode.ogg')
         fireBall.play();
         $skills.removeClass('hidden')
         $skills.attr('src', './images/animations/explosion.gif')
@@ -226,7 +226,7 @@ const cloudsFireBall = () =>{
     
     
     const tifasLightning = ()=>{
-        const lightning = new Audio('/music/soundfx/tifa-magic.ogg')
+        const lightning = new Audio('./music/soundfx/tifa-magic.ogg')
         lightning.play();
         $skills.removeClass('hidden')
         $skills.attr('src', './images/animations/tifas-magic.gif')
@@ -237,7 +237,7 @@ const cloudsFireBall = () =>{
     
     
     const sephirothBlast1 = ()=>{
-        const blast = new Audio('/music/soundfx/sephiroth-magic.ogg')
+        const blast = new Audio('./music/soundfx/sephiroth-magic.ogg')
         blast.play();
         $blast1.removeClass('hidden')
     setTimeout(()=>{
