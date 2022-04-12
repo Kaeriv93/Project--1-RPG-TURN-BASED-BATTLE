@@ -17,6 +17,9 @@ The game is a fair bit loud so I do recommend lower your volume.
 This screen  is showing the instructions to the game.
 ![Screen Shot 2022-04-11 at 12 43 19 PM](https://user-images.githubusercontent.com/95429272/162798598-cce7a5a7-cfe9-46e8-af50-f718594bfa03.png)
 The initial ui and view of the characters being displayed in battle also showing their attack menu.
+![Screen Shot 2022-04-12 at 11 01 58 AM](https://user-images.githubusercontent.com/95429272/163005440-cc039d3a-63bb-4299-834a-fb030cfc1ab5.png)
+Using magic to defeat the enemey.
+
 
 
 # Next Steps: 
