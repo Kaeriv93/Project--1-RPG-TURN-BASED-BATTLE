@@ -164,7 +164,7 @@ const checkTurn = ()=>{
 
 // Heroes and Villains
 
-const sephiroth = new Heroes('Sephiroth',2000,2000,4000,4000,10,50,30,70,15);
+const sephiroth = new Heroes('Sephiroth',2500,2500,4000,4000,10,50,30,70,15);
 
 const cloud = new Heroes('Cloud', 200, 200, 100, 100, 50,90,130,220,3,99);
 
