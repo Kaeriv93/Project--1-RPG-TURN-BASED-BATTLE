@@ -13,7 +13,7 @@ you will not be able to heal or charge.
 7. The menu will consist of an ATTACK -(Attack the enemy) Magic-(A powerful skill that uses Mana points) -Heal(your character will heal themselves, but you are limited to three uses) Charge- (A great way to restore your mana points)
 8. The bottom of the screen will display your character's HP (health points if it reachs 0 they will be inactive) and your character's MP (Mana points needed to use your magic attack , otherwise cannot be activated).
 9. You will successfully complete the game if you are able to beat the boss OR lose if he defeats you.
-10. A damage counter will be displayed to indicate how much damage has been done to the boss. (He has 2000HP!!!) 
+10. A damage counter will be displayed to indicate how much damage has been done to the boss. (He has 2500HP!!!) 
 11. At the bottom will display the action that has occured.
 12. Enjoy and have fun!
 
@@ -27,7 +27,7 @@ MVP GOALS
 6. I want the game to end only if both of my heroes hp reach 0, or if the boss hp reaches 0.
 7. A game over screen will display if we lose, a winning message if we win.
 8. I want to be able to display who's turn it is
-9. I want to be able to display a damage counter over or next to a character if they were to get hit.
+9. I want to be able to display a damage counter over or next to a character if they were to get hit. <--- only did it for the boss. 
 10. I want my characters to appear animated(Use of gifs via spritesheets)
 11. I want there to be a small chance of a critical hit.
 12. I want to include sound effects for various actions.
@@ -35,7 +35,7 @@ MVP GOALS
 Stretch Goals
 1. I want to be able to display a health/mana bar(not a number) that will adjust according to our heroes health/mana.
 2. I want to be able to animate the attack options and add more than a few skills. (I currently am making a sprite sheet and turining the animations into gifs<-- a lot of fun actually!)
-3. I want our characters or boss to turn slightly red and revert back to their normal color after being hit.
+3. I want our characters or boss to turn slightly red and revert back to their normal color after being hit. 
 
 
 

@@ -409,6 +409,8 @@ const checkCloud = ()=>{
     if(cloud.health === 0){
         $cloud.attr('src', './images/Cloud/cloud-dead.gif')
         $cloudMenu.addClass('hidden')
+        let cloudDeath = new Audio('./music/soundfx/cloud-death.mp3')
+        cloudDeath.play();
         currentTurn = 1
         console.log("Cloud is dead!")
     } 
@@ -526,6 +528,8 @@ const checkTifa =() =>{
     if(tifa.health === 0){
         $tifa.attr('src', './images/Tifa/tifa-dead.gif')
         $tifaMenu.addClass('hidden')
+        let tifaDeath = new Audio('./music/soundfx/tifa-death.mp3')
+        tifaDeath.play();
         console.log("Tifa is dead!")
     } 
     $tifasHP[0].innerText = `HP:${tifa.health}/150`
