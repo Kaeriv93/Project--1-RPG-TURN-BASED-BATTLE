@@ -58,4 +58,7 @@ It's still day 2, but we finally finished class hours. I'm going to take a short
 6. Day 7 went off without a hitch so we actually merged our development branch into the main. The game is  near 100% of where I had originall envisioned it.
 I decided to change the red and blue potions to just heals and charges since I only had one of each healing item. In the future I would like to
 implement more magic skills and items into an array and have the user select into to them. Currently I am limited by not having a saving function,
-or being able to navigate through multiple pages without having to go to another link.   
+or being able to navigate through multiple pages without having to go to another link. 
+
+Changed it to where our heroes hp turn red whenver it reaches below a certain threshold. The critical hit works for our character, but our boss character also has a chance for it as well.
+Also added a dying sfx for the characters. We also increased Sephiroths health from 2000 to 2500 and buffed his stats slightly to make the game a bit more difficult, our heroes also got a slight debuff.
