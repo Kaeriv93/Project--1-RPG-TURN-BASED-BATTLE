@@ -36,8 +36,16 @@ class Heroes{
         this.charges = charges;
     }
      attack(target) {
-        // let luckyChance = Math.floor(Math.random()*10) 
+        let luckyChance = Math.floor(Math.random()*10)
         let damage = Math.floor(Math.random()*(this.maxStr-this.minStr + 1)+this.minStr);
+        if(luckyChance <= 1){
+            damage = Math.floor(damage *1.5)
+            const criticalHit = new Audio('./music/soundfx/criticalHit.ogg')
+            console.log("Critical Hit!")
+            criticalHit.play();
+            hit.pause();
+            
+        } 
         target.health -= damage
         hit.play();
         if(target.name === 'Sephiroth'){
