@@ -5,13 +5,22 @@ let currentTurn = 0;
 let $status = $('.gamestatus')
 let $hitbox = $('.sephiroth-hitbox')
 let $battlelog =$('p.battlelog')
+let $restart =$('.restart')
 
 
+//Reset Button
+$restart.click(()=>{
+    location.reload();
+})
+
+//Sephiroth Fadeout Animation when hit
 const getHit = ()=>{
         $sephiroth.fadeOut(200);
         $sephiroth.fadeIn(200);
 }
 
+
+//Heroes Fadeout Animation when hit
 const hurt =()=>{
     $cloud.fadeOut(200);
     $cloud.fadeIn(200);
@@ -161,10 +170,12 @@ const checkTurn = ()=>{
         $status[0].innerText = "GAME OVER!!!";
         $status.addClass('lose')
         battleMusic.pause();
+        $restart.removeClass('hidden')
         gameOver.play();
     } else if(currentTurn === 0 && sephiroth.health === 0 || currentTurn === 1 && sephiroth.health === 0 || currentTurn === 2 && sephiroth.health === 0){
         $status[0].innerText = "Victory!!!!";
         $status.addClass('win')
+        $restart.removeClass('hidden')
         battleMusic.pause();
         victory.play();
         setInterval(()=>{
