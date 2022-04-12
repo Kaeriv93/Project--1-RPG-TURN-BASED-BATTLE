@@ -21,6 +21,10 @@ body{
   
 }
 
+h1{
+  color:#F3E9DD;
+}
+
 .battleground{
   padding-top: 40vh;
 
@@ -391,3 +395,107 @@ button:hover{
      }
     
    }
+
+
+
+   @media(max-width:430px){
+    h1{
+      font-size: 1rem;
+      position: absolute;
+      top: 10vh;
+      left:15vh;
+    }
+    
+    .cloud{
+      position: absolute;
+      width: 30%;
+      top:30vh;
+    }
+ 
+    .tifa{
+      position: absolute;
+      width: 18%;
+      top: 50vh;
+    }
+ 
+     .sephiroth{
+      position: absolute;
+      top:35vh;
+      width: 40%;
+      left:25vh;
+     }
+
+     .sephiroth-hitbox{
+      position: absolute;
+      top:60vh;
+      left: 77vh;
+    }
+
+     .cloud-menu{
+       position: absolute;
+       top:30vh;
+       left: 12vh;
+       
+     }
+     .tifa-menu{
+       position: absolute;
+       top:50vh;
+       left: 8vh;
+     }
+ 
+     .character-profiles{
+       top:30px;
+      max-width: 200px;
+      max-height: 200px;
+     }
+
+     .clouds-status-pic{
+       width: 80px;
+     }
+     .tifas-status-pic{
+       width: 80px;
+     }
+     
+     .character-profiles li{
+    display: none;
+     }
+
+     .battlelog{
+       position: absolute;
+       bottom:10vh;
+       font-size: 1rem;
+     }
+ 
+     .skills{
+      position: absolute;
+      top:30vh;
+      left: 25vh;
+      width: 120px;
+      
+ 
+     
+     }
+ 
+     .blast1{
+       position: absolute;
+       z-index: 2;
+       top:5vh;
+       left: -8vh;
+       width: 250px;
+     }
+ 
+     .blast2{
+       position: absolute;
+       top:25vh;
+       left: -8vh;
+       width: 250px;
+       z-index: 2;
+     }
+    
+     .modal-content{
+       font-size: 12px;
+     }
+
+   }
+
+   
