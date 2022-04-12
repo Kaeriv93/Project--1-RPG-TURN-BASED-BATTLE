@@ -404,6 +404,8 @@ $cloudHeal.click(()=>{
 
         cloudHeal(cloud)
 
+    } if(cloud.heals === 0){
+        $cloudHeal.css("background-color", "red");
     }
     console.log("No more potions!")
 })
@@ -503,8 +505,11 @@ $tifaMagic.click(()=>{
 $tifaItems.click(()=>{
     if(tifa.heals>0){
         tifaHeal(tifa);
+    } 
+    if(tifa.heals === 0){
+        $tifaItems.css("background-color", "red");
     } else{
-        console.log("Can't heal")
+        console.log("No more heals")
     }
    
 })
