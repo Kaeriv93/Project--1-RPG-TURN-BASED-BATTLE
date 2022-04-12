@@ -247,7 +247,7 @@ const cloudsFireBall = () =>{
     
 
 const sephirothBlast2 = ()=>{
-    const blast = new Audio('/music/soundfx/sephiroth-magic.ogg')
+    const blast = new Audio('./music/soundfx/sephiroth-magic.ogg')
     blast.play();
     $blast2.removeClass('hidden')
     setTimeout(()=>{
