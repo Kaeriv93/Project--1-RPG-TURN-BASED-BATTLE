@@ -398,7 +398,7 @@ button:hover{
 
 
 
-   @media(max-width:430px){
+   @media(min-width:300px)and(max-width:430px){
     h1{
       font-size: 1rem;
       position: absolute;
@@ -449,12 +449,6 @@ button:hover{
       max-height: 200px;
      }
 
-     .clouds-status-pic{
-       width: 80px;
-     }
-     .tifas-status-pic{
-       width: 80px;
-     }
      
      .character-profiles li{
     display: none;
