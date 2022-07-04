@@ -60,6 +60,7 @@ h1{
 .tifa{
   position: absolute;
   top: 55vh;
+
   
 }
 
@@ -113,24 +114,16 @@ right: 10vh;
 /*Grid Container for Status*/
 .health-grid-container{
   display: flex;
+  position: fixed;
+  margin-top: 25vh;
+  bottom: 0;
 }
 
 /* Our Heroes Health and Mana Status */
 .character-profiles{
-  float:left;
-  flex-wrap: wrap;
-  position: relative;
-  padding-top: 25vh;
-  bottom: 0;
-  
+  display: inline-flex;
 }
 
-.character-profiles li{
-display: inline;
-position: absolute;
-bottom: 15vh;
-
-}
 .cloud-hp{
   left: 7vh;
 }
@@ -146,7 +139,7 @@ bottom: 15vh;
 }
 
 .pic{
-float: left;
+ float: left;
  padding: 15px 100px;
 }
 
