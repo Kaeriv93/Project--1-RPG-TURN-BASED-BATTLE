@@ -116,6 +116,12 @@ right: 10vh;
 }
 
 
+/*Grid Container for Status*/
+.health-grid-container{
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+  grid-template-rows: 1fr 2fr 2fr;
+}
 
 /* Our Heroes Health and Mana Status */
 .character-profiles{
