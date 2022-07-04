@@ -12,12 +12,6 @@ body{
     background-image: url(https://i.imgur.com/QKEJKBo.png);
     background-size: cover;
     background-repeat: no-repeat;
-   
-
-   
-    
-                                                
-  
   
 }
 
@@ -118,9 +112,7 @@ right: 10vh;
 
 /*Grid Container for Status*/
 .health-grid-container{
-  display: grid;
-  grid-template-columns: 1fr 2fr 2fr;
-  grid-template-rows: 1fr 2fr 2fr;
+  display: flex;
 }
 
 /* Our Heroes Health and Mana Status */
@@ -128,14 +120,15 @@ right: 10vh;
   float:left;
   flex-wrap: wrap;
   position: relative;
-  padding-top: 300px;
+  padding-top: 25vh;
+  bottom: 0;
+  
 }
 
 .character-profiles li{
 display: inline;
 position: absolute;
 bottom: 15vh;
-
 
 }
 .cloud-hp{
@@ -266,7 +259,7 @@ button:hover{
 
 
 
-  @media(min-width:2401px)and (max-width:3600px){
+  /* @media(min-width:2401px)and (max-width:3600px){
    .cloud{
      position: absolute;
      top:900px;
@@ -496,6 +489,6 @@ button:hover{
        font-size: 12px;
      }
 
-   }
+   } */
 
    
