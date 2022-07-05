@@ -37,6 +37,16 @@ h1{
   
 }
 
+.stat-screen{
+  display: flex;
+  justify-content: center;
+}
+
+.gamestatus{
+  position: fixed;
+  bottom:0;
+}
+
 
 
 /* END OF BACKGROUND  */
